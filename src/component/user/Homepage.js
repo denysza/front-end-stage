@@ -35,22 +35,25 @@ class Homepage extends Component{
               <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          
+                          <img src="image/heart.svg" />
                       </div>
-                      <div className="menu"></div>
+                      <div className="menu">
+                          <a href=""><h3>ログイン</h3></a>
+                          <a href=""><h3>会員登録</h3></a>
+                      </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
               </div>
               <div className="banner">
-                <img className="share_button" src="image/button.svg"></img>
+                <img className="share_button" onClick="" src="image/button.svg" />
                 <div className="select_group">
                     <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                         <div className='search'>
                             <div className='search_box'>
-                                <img src="image/search.svg" className="searchImage" onClick={this.focusInput}></img>
+                                <img src="image/search.svg" className="searchImage" onClick={this.focusInput} />
                                 <input id="search_input" type="text" className="search_text" name="search_keyword"></input>
                             </div>
-                            <div className='button_outline' onClick={this.formSubmit}>
+                            <div className='button_outline' onClick="">
                                 <div>検索</div>
                             </div>
                         </div>
@@ -65,15 +68,15 @@ class Homepage extends Component{
                         </select>
                         <div className="arrange_box">
                             <div>評価</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}}></img>
+                            <img src="image/arrange.svg" className="arrangeImage" onClick="" />
                         </div>
                         <div className="arrange_box">
                             <div>人気</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}}></img>
+                            <img src="image/arrange.svg" className="arrangeImage" onClick="" />
                         </div>
                         <div className="arrange_box">
                             <div>新着</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}}></img>
+                            <img src="image/arrange.svg" className="arrangeImage" onClick="" />
                         </div>
                     </div>
                 </div>
@@ -83,9 +86,9 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}}></img>
+                                <img src="image/business.png" className="video_image" alt="" onClick="" />
                                 <div className="evaluation">
-                                    <img src="image/heart.svg" alt="heart" className="heart"></img>
+                                    <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
                                 </div>    
                             </div>
@@ -104,9 +107,9 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}}></img>
+                                <img src="image/business.png" className="video_image" alt="" onClick="" />
                                 <div className="evaluation">
-                                    <img src="image/heart.svg" alt="heart" className="heart"></img>
+                                    <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
                                 </div>    
                             </div>
@@ -125,9 +128,9 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}}></img>
+                                <img src="image/business.png" className="video_image" alt="" onClick="" />
                                 <div className="evaluation">
-                                    <img src="image/heart.svg" alt="heart" className="heart"></img>
+                                    <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
                                 </div>    
                             </div>
@@ -146,9 +149,9 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}}></img>
+                                <img src="image/business.png" className="video_image" alt="" onClick="" />
                                 <div className="evaluation">
-                                    <img src="image/heart.svg" alt="heart" className="heart"></img>
+                                    <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
                                 </div>    
                             </div>
