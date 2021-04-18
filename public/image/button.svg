@@ -1,0 +1,67 @@
+<svg id="button" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="471" height="89.177" viewBox="0 0 471 89.177">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#1c46cf"/>
+      <stop offset="1" stop-color="#0e2368"/>
+    </linearGradient>
+    <filter id="動画追加" x="162.5" y="21.987" width="105" height="41" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.529"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Path_250" data-name="Path 250" transform="translate(5.667 5.844)" opacity="0.48">
+    <path d="M 464.8333129882813 82.83338928222656 L 0.5000094175338745 82.83338928222656 L 0.5000094175338745 0.4999811351299286 L 464.8333129882813 0.4999811351299286 L 464.8333129882813 82.83338928222656 Z" stroke="none"/>
+    <path d="M 1 0.9999847412109375 L 1 82.33338928222656 L 464.3333129882813 82.33338928222656 L 464.3333129882813 0.9999847412109375 L 1 0.9999847412109375 M 0 -1.52587890625e-05 L 465.3333129882813 -1.52587890625e-05 L 465.3333129882813 83.33338928222656 L 0 83.33338928222656 L 0 -1.52587890625e-05 Z" stroke="none" fill="#707070"/>
+  </g>
+  <path id="Path_11" data-name="Path 11" d="M-.125,0H459.861l.014,79.177H-.111Z" transform="translate(0.125)" fill="url(#linear-gradient)"/>
+  <g id="Group_18" data-name="Group 18" transform="translate(167 22.489)">
+    <g transform="matrix(1, 0, 0, 1, -167, -22.49)" filter="url(#動画追加)">
+      <text id="動画追加-2" data-name="動画追加" transform="translate(167 50.49)" fill="#f9f4aa" font-size="24" font-family="YuGothicUI-Bold, Yu Gothic UI" font-weight="700"><tspan x="0" y="0">動画追加</tspan></text>
+    </g>
+    <g id="Group_17" data-name="Group 17" transform="translate(246.785 6.153) rotate(90)">
+      <line id="Line_4" data-name="Line 4" y1="10.859" x2="10.859" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_5" data-name="Line 5" x1="10.859" y1="10.859" transform="translate(10.859)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"/>
+    </g>
+  </g>
+  <g id="Group_21" data-name="Group 21" transform="translate(428.133 0.653)">
+    <g id="Group_19" data-name="Group 19" transform="translate(0)">
+      <g id="Group_5" data-name="Group 5">
+        <line id="Line_12" data-name="Line 12" x1="31.207" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+        <line id="Line_13" data-name="Line 13" y2="17.767" transform="translate(31.207)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+      </g>
+      <path id="Path_2" data-name="Path 2" d="M11.761,0H0L11.761,11.761Z" transform="translate(18.793 0.653)" fill="#242424" opacity="0.39"/>
+    </g>
+    <g id="Group_20" data-name="Group 20" transform="translate(0 60.112)">
+      <g id="Group_5-2" data-name="Group 5">
+        <line id="Line_12-2" data-name="Line 12" x1="31.207" transform="translate(0 17.767)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+        <line id="Line_13-2" data-name="Line 13" y1="17.767" transform="translate(31.207)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+      </g>
+      <path id="Path_2-2" data-name="Path 2" d="M11.761,11.761H0L11.761,0Z" transform="translate(18.793 5.353)" fill="#242424" opacity="0.39"/>
+    </g>
+  </g>
+  <g id="Group_22" data-name="Group 22" transform="translate(0.817 0.653)">
+    <g id="Group_19-2" data-name="Group 19" transform="translate(0)">
+      <g id="Group_5-3" data-name="Group 5">
+        <line id="Line_12-3" data-name="Line 12" x2="31.207" transform="translate(0)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+        <line id="Line_13-3" data-name="Line 13" y2="17.767" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+      </g>
+      <path id="Path_2-3" data-name="Path 2" d="M0,0H11.761L0,11.761Z" transform="translate(0.653 0.653)" fill="#242424" opacity="0.39"/>
+    </g>
+    <g id="Group_20-2" data-name="Group 20" transform="translate(0 60.112)">
+      <g id="Group_5-4" data-name="Group 5">
+        <line id="Line_12-4" data-name="Line 12" x2="31.207" transform="translate(0 17.767)" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+        <line id="Line_13-4" data-name="Line 13" y1="17.767" fill="none" stroke="#fff" stroke-linecap="square" stroke-width="1"/>
+      </g>
+      <path id="Path_2-4" data-name="Path 2" d="M0,11.761H11.761L0,0Z" transform="translate(0.653 5.353)" fill="#242424" opacity="0.39"/>
+    </g>
+  </g>
+  <rect id="Rectangle_12" data-name="Rectangle 12" width="112" height="3" transform="translate(174 0.486)" fill="#242424" opacity="0.64"/>
+  <path id="Path_12" data-name="Path 12" d="M0-.422H112.383V2.192H0Z" transform="translate(173.801 76.97)" fill="#242424" opacity="0.64"/>
+  <rect id="Rectangle_13" data-name="Rectangle 13" width="3" height="10" transform="translate(0 34.486)" fill="#242424" opacity="0.84"/>
+  <rect id="Rectangle_14" data-name="Rectangle 14" width="3" height="10" transform="translate(457 34.486)" fill="#242424" opacity="0.84"/>
+  <line id="Line_27" data-name="Line 27" x2="23.522" transform="translate(1.96 39.857)" fill="none" stroke="#e5db9d" stroke-width="1"/>
+  <path id="Path_46" data-name="Path 46" d="M-.518,0H21.067" transform="translate(438.265 39.857)" fill="#242424" stroke="#e5db9d" stroke-width="1"/>
+</svg>
