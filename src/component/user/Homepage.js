@@ -6,7 +6,6 @@ import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../../layout/Footer.js';
 
 
-import './../../asset/main.css';
 import './../../asset/home.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +42,10 @@ class Homepage extends Component{
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
+                  <img className="share_button sp" onClick="" src="image/button.svg" />
               </div>
               <div className="banner">
-                <img className="share_button" onClick="" src="image/button.svg" />
+                <img className="share_button pc" onClick="" src="image/button.svg" />
                 <div className="select_group">
                     <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                         <div className='search'>

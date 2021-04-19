@@ -1,0 +1,99 @@
+.share_button {
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+    width: 30%;
+}
+.play_button {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    width: 100px;
+}
+.evaluation img {
+    width: 40px;
+}
+.heart_text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: #F9F4AA;
+}
+.banner {
+    display: flex;
+}
+.mark {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mark > div {
+    width: 100px;
+    margin: auto;
+}
+.mark .button_outline {
+    margin: 10px;
+    width: 170px;
+}
+.video_info {
+    width: 50%;
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.video_info_box {
+    padding: 20px;
+    border: 1px #957B76 solid;
+    border-radius: 8px;
+    outline: 1px #957B76 solid;
+    outline-offset: 5px;
+    width: 70%;
+    margin: auto;
+}
+.video_info_box h3 {
+    text-align: center;
+    color: white;
+}
+.info_content {
+    display: flex;
+    justify-content: space-between;
+    color: #F9F4AA;
+}
+.info_value span {
+    color: #EB4444;
+    font-size: 1.4em;
+}
+.comment_box {
+    background-color: #FBFBFB;
+    border: #707070 1px solid;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+.comment_inner {
+    padding: 20px;
+}
+.comment_inner span {
+    margin-left: 15px;
+    font-size: 0.7em;
+    color: #40403C;
+}
+.comment_inner hr {
+    margin-top: -15px;
+}
+.comment_text {
+    background-color: white;
+    border-radius: 8px;
+    border: #707070 1px solid;
+}
+.comment_text p {
+    margin: 15px;
+}
+.pagination {
+    margin-right: 0;
+}

@@ -22,7 +22,7 @@ class Footer extends Component {
                         <img src="image/google.png"></img>
                     </div>
                     <div className="copyright">
-                        <h6>Copyright 2021 株式会社TSC</h6>
+                        <p>Copyright 2021 株式会社TSC</p>
                     </div>
                 </div>
             </>
