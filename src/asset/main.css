@@ -45,14 +45,20 @@ label {
     border-radius: 10px;
 }
 .card_inner {
-    padding: 50px 20px;
+    padding: 40px 20px;
 }
 .notfound {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 00px;
 }
 .notfound .general_button_outline {
     margin-top: 70px;
+}
+.notfound img {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 @font-face {
     font-family: SourceHanSansJP_R;

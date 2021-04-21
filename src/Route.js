@@ -9,6 +9,7 @@ import Login from './component/user/Login';
 import Mypage from './component/user/Mypage';
 import NotFound from './component/NotFound';
 import adminVideoDetail from './component/admin/AdminVideoDetail';
+import AdminLogin from './component/admin/AdminLogin';
 import MemberManage from './component/admin/MemberManage';
 import MemberDetail from './component/admin/MemberDetail';
 import ManagePassword from './component/admin/ManagePassword';
@@ -23,7 +24,8 @@ class Routes extends React.Component {
                 <Route exact path='/registration' component={Registration} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/mypage' component={Mypage} />
-                <Route exact path='/admin' component={AdminDashboard}/>
+                <Route exact path='/admin' component={AdminLogin}/>
+                <Route exact path='/dashboard' component={AdminDashboard}/>
                 <Route exact path='/admin_video_detail' component={adminVideoDetail}/>
                 <Route exact path='/member_manage' component={MemberManage}/>
                 <Route exact path='/member_detail' component={MemberDetail}/>

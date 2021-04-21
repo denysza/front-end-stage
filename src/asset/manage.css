@@ -298,3 +298,16 @@ td .red {
 .video_detail img {
     width: 400px;
 }
+.login_box {
+    width: 600px;
+    margin: auto;  
+    border-radius: 10px;
+    margin-top: 200px;
+    box-shadow: black 0px 0px 3px;
+}
+.login_inner {
+    padding: 30px;
+}
+.login_inner .input_element input {
+    background: rgba(0, 0, 0, 0.6);
+}
