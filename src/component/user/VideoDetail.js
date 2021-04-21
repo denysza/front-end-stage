@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../../layout/Footer.js';
 
-import './../../asset/home.css';
+import './../../asset/main.css';
 import './../../asset/videoDetail.css';
 
 class VideoDetail extends Component{
@@ -24,20 +24,20 @@ class VideoDetail extends Component{
                       </div>
                   </div>
                   <img src="image/business.png" alt="video_sharing" />
-                  <img className="share_button" onClick="" src="image/button.svg" />
-                  <img className="play_button" onClick="" src="image/play.svg" />
+                  <img className="detail_share_button" onClick={{}} src="image/button.svg" />
+                  <img className="play_button" onClick={{}} src="image/play.svg" />
                   <div className="evaluation">
                     <img src="image/heart.svg" alt="heart" className="heart" />
                     <div className="heart_text">15</div>
                   </div>   
                 </div>
-                <div className="banner">
+                <div className="detail_banner">
                     <div className="mark">
                         <div>
-                            <div className='button_outline' onClick="">
+                            <div className='button_outline' onClick={{}}>
                                 <div>おすすめ</div>
                             </div>
-                            <div className='button_outline' onClick="">
+                            <div className='button_outline' onClick={{}}>
                                 <div>コメント追加</div>
                             </div>
                         </div>

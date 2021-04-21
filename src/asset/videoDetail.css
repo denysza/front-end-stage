@@ -1,4 +1,4 @@
-.share_button {
+.detail_share_button {
     position: absolute;
     left: 50%;
     bottom: 10%;
@@ -23,8 +23,11 @@
     font-size: 18px;
     color: #F9F4AA;
 }
-.banner {
+.detail_banner {
     display: flex;
+    background-image: url(image/banner.png);
+    width: 100%;
+    background-size: cover;
 }
 .mark {
     width: 50%;
@@ -65,10 +68,10 @@
     justify-content: space-between;
     color: #F9F4AA;
 }
-.info_value span {
+/* .info_value span {
     color: #EB4444;
     font-size: 1.4em;
-}
+} */
 .comment_box {
     background-color: #FBFBFB;
     border: #707070 1px solid;

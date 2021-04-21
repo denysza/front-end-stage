@@ -1,29 +1,18 @@
 
 
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../../layout/Footer.js';
+import Pagination from '@material-ui/lab/Pagination';
 
 import './../../asset/main.css';
-import './../../asset/home.css';
+import './../../asset/mypage.css';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-}));
-
-class Homepage extends Component{
+class Registration extends Component{
     
-
-
     render(){
         return(
             <>
-              <div className="header">
+                <div className="header">
                   <div className="header_bar">
                       <div className="logo">
                           <img src="image/heart.svg" />
@@ -34,46 +23,29 @@ class Homepage extends Component{
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
-                  <img className="share_button sp" onClick={{}} src="image/button.svg" />
-              </div>
-              <div className="banner">
-                <img className="share_button pc" onClick={{}} src="image/button.svg" />
-                <div className="select_group">
-                    <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
-                        <div className='search'>
-                            <div className='search_box'>
-                                <img src="image/search.svg" className="searchImage" onClick={this.focusInput} />
-                                <input id="search_input" type="text" className="search_text" name="search_keyword"></input>
-                            </div>
-                            <div className='button_outline' onClick={{}}>
-                                <div>検索</div>
-                            </div>
-                        </div>
-                    </form> 
-                    <div className="arrange_group">
-                        <select className="select_category">
-                            <option value="">カテゴリー</option>
-                            <option value="Category1">カテゴリー1</option>
-                            <option value="Category2">カテゴリー2</option>
-                            <option value="Category3">カテゴリー3</option>
-                            <option value="Category4">カテゴリー4</option>
-                        </select>
-                        <div className="arrange_box">
-                            <div>評価</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
-                        </div>
-                        <div className="arrange_box">
-                            <div>人気</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
-                        </div>
-                        <div className="arrange_box">
-                            <div>新着</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
-                        </div>
-                    </div>
+                  <div className="box_card">
+                      <div className="card_inner">
+                          <h1>アカウント情報</h1>
+                          <img src="image/account.png" alt="Video" className="account_image" />
+                          <div className="account_info">
+                              <span>ニックネーム</span>
+                              <span>山田太郎</span>
+                          </div>
+                          <div className="account_info">
+                              <span>メールアドレス</span>
+                              <span>example@email.com</span>
+                          </div>
+                          <div className="account_info">
+                              <span>パスワード</span>
+                              <span>mo****!12****hj</span>
+                          </div>
+                          <div className='button_outline general_button_outline' onClick={{}}>
+                            <div>登録情報変更</div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              <div className="container">
+                <div className="container">
                   <div className="video_list">
                       <div className="video_box">
                         <div className="video_inner">
@@ -164,11 +136,11 @@ class Homepage extends Component{
                     <div>600 件中 1 から 15 まで表示</div>
                     <Pagination count={150} variant="outlined" shape="rounded"color="primary" />
                   </div>
-              </div>
-              <Footer />
+                </div>
+                <Footer />
             </>
         )
     }
 }
 
-export default Homepage
+export default Registration

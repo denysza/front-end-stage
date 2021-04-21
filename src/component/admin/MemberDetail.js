@@ -2,9 +2,15 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import Button from '@material-ui/core/Button';
+
 import './../../asset/manage.css';
 
-class Dashboard extends Component{
+class MemberDetail extends Component{
 
     render(){
         return(
@@ -14,11 +20,11 @@ class Dashboard extends Component{
                 </header>
                 <div className="sidebar">
                     <div className="sidebar_tab">
-                        <div className="tab">
+                        <div className="tab active">
                             <img src="image/man.png" alt="" />
                             <h3>会員管理</h3>
                         </div>
-                        <div className="tab active">
+                        <div className="tab">
                             <img src="image/film.png" alt="" />
                             <h3>動画管理</h3>
                         </div>
@@ -29,10 +35,47 @@ class Dashboard extends Component{
                     </div>
                 </div>
                 <div className="content_bar">
-                    <h3>動画管理</h3>
+                    <h3>会員管理 / 会員詳細</h3>
                 </div>
                 <div className="content">
                     <div className="manage_card">
+                        {/* <Dialog
+                            className="alert-modal"
+                            open={Alertmodal}
+                            TransitionComponent={Transitionalert}
+                            keepMounted
+                            onClose={this.handleCloseAlertModal}
+                            aria-labelledby="alert-dialog-slide-title"
+                            aria-describedby="alert-dialog-slide-description"
+                        >
+                            <DialogTitle id="alert-dialog-slide-title" style={{textAlign:"center"}}>
+                                {alertTitle}
+                            </DialogTitle>
+                            <DialogContent>
+                            <DialogContentText id="alert-dialog-slide-description">
+                                {alertContent}
+                            </DialogContentText>
+                            <div className="search-btn">
+                                <Button onClick={this.handleCloseAlertModal} className="btn btn-search">
+                                {eval(language).ok}
+                                </Button>
+                            </div>
+                            </DialogContent>
+                        </Dialog> */}
+                        <div className="memmber_detail">
+                            <div className="info_type">
+                                <p>動画タイトル  &nbsp;&nbsp;:</p>
+                                <p>共有日付  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+                                <p> 推薦数   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+                                <p>再生回数  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+                            </div>
+                            <div className="info_value">
+                                <p>タイトルタイトル</p>
+                                <p>2021年4月10日</p>
+                                <p><span>15</span></p>
+                                <p><span>25</span>回</p>
+                            </div>
+                        </div>
                         <div className="select_group_m">
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
@@ -80,10 +123,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -100,10 +140,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -120,10 +157,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -140,10 +174,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -160,10 +191,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -180,10 +208,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -200,10 +225,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -220,10 +242,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -240,10 +259,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -260,10 +276,7 @@ class Dashboard extends Component{
                                 <td>
                                     <div>
                                         <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
+                                        <p>動画タイトル</p>
                                     </div>
                                 </td>
                                 <td><p>アクションビデオ</p></td>
@@ -293,4 +306,4 @@ class Dashboard extends Component{
     }
 }
 
-export default Dashboard
+export default MemberDetail

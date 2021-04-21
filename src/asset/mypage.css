@@ -1,0 +1,139 @@
+.account_image {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 50%;
+    margin-bottom: 30px;
+}
+.account_info {
+    background-color: white;
+    box-shadow: rgba(0,0,0,0.3) 0px 2px 4px;
+    border-radius: 5px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.account_info span:nth-child(1) {
+    margin-left: 30px;
+}
+.account_info span:nth-child(2) {
+    margin-right: 30px;
+}
+
+.video_list {
+    display: flex;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.video_box {
+    width: 31%;
+    border: 1px #F9F4AA solid;
+    background-color: transparent;
+    box-shadow: black 0px 0px 4px;
+    color: #F9F4AA;
+    font-family: KozMinPro_R;
+    text-align: center;
+    margin: 1%;
+}
+.video_inner {
+    margin: 8px;
+    outline: 2px solid black;
+    outline-offset: 2px;
+
+}
+.video_image {
+    border-bottom: 3px white solid;
+    cursor: pointer;
+}
+.video_top {
+    position: relative;
+}
+.video_bottom {
+    background-color: black;
+    padding: 20px;
+}
+.video_bottom_inner {
+    background-color: #151212;
+    border: 1px solid #707070;
+    border-radius: 10px;
+    width: 80%;
+    margin: auto;
+}
+.video_title hr {
+    background-color: #F9F4AA;
+    height: 2px;
+    border: none;
+    width: 80%;
+    margin-top: -10px;
+}
+.video_des {
+    color: #F9F4AA;
+    opacity: 0.5;
+}
+.evaluation {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: 28px;
+}
+.evaluation img {
+    width: 30px;
+}
+.pagination {
+    display: flex;
+    align-items: center;
+    font-family: KozMinPro_R;
+    float: right;
+    margin-right: 3%;
+}
+
+@media (max-width: 1367px) {
+    .video_bottom_inner {
+        width: 95%;
+    }
+}
+@media (max-width: 1201px) {
+    .video_box {
+        width: 45%;
+        margin: 2%;
+    }
+}
+@media (max-width: 769px) {
+    .video_title hr {
+        height: 1px;
+        width: 90%;
+    }
+    .video_bottom_inner {
+        width: 100%;
+    }
+    .video_inner {
+        margin: 5px;
+    }
+    .pagination {
+        flex-direction: column;
+    }
+}
+@media (max-width: 500px) {
+    .video_list {
+        flex-direction: column;
+    }
+    .video_box {
+        width: 80%;
+        margin: 20px 10%;
+    }
+    .video_title hr {
+        height: 1px;
+        width: 60%;
+    }
+    .video_inner {
+        margin: 8px;
+    }
+    .evaluation {
+        font-size: 20px;
+    }
+}

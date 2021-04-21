@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 import './../../asset/manage.css';
 
-class Dashboard extends Component{
+class MemberManage extends Component{
 
     render(){
         return(
@@ -14,11 +14,11 @@ class Dashboard extends Component{
                 </header>
                 <div className="sidebar">
                     <div className="sidebar_tab">
-                        <div className="tab">
+                        <div className="tab active">
                             <img src="image/man.png" alt="" />
                             <h3>会員管理</h3>
                         </div>
-                        <div className="tab active">
+                        <div className="tab">
                             <img src="image/film.png" alt="" />
                             <h3>動画管理</h3>
                         </div>
@@ -46,19 +46,8 @@ class Dashboard extends Component{
                                 </div>
                             </form> 
                             <div className="arrange_group_m">
-                                <select className="select_category_m">
-                                    <option value="">カテゴリー</option>
-                                    <option value="Category1">カテゴリー1</option>
-                                    <option value="Category2">カテゴリー2</option>
-                                    <option value="Category3">カテゴリー3</option>
-                                    <option value="Category4">カテゴリー4</option>
-                                </select>
                                 <div className="arrange_box_m">
-                                    <div>評価</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
-                                </div>
-                                <div className="arrange_box_m">
-                                    <div>人気</div>
+                                    <div>共有件数</div>
                                     <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
                                 </div>
                                 <div className="arrange_box_m">
@@ -66,30 +55,24 @@ class Dashboard extends Component{
                                     <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
                                 </div>
                             </div>
-                            </div>
-                        <table className="video">
+                        </div>
+                        <table className="member">
                             <tr>
-                                <th>動画</th>
-                                <th>カテゴリー</th>
-                                <th>共有日付</th>
-                                <th>再生回数</th>
-                                <th>評価回数</th>
+                                <th>ニックネーム</th>
+                                <th>メールアドレス</th>
+                                <th>登録日付</th>
+                                <th>共有件数</th>
+                                <th>備考</th>
                                 <th></th>
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -98,18 +81,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -118,18 +95,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -138,18 +109,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -158,18 +123,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -178,18 +137,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -198,18 +151,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -218,18 +165,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -238,18 +179,12 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -258,18 +193,26 @@ class Dashboard extends Component{
                             </tr>
                             <tr>
                                 <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
+                                    <p>山田太郎</p>
                                 </td>
-                                <td><p>アクションビデオ</p></td>
+                                <td><p>example@email.com</p></td>
                                 <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
+                                <td>
+                                    <button className="grey">許可</button>
+                                    <button className="green">詳細</button>
+                                    <button className="red">削除</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>山田太郎</p>
+                                </td>
+                                <td><p>example@email.com</p></td>
+                                <td><p>2021年4月10日</p></td>
+                                <td><p>25件</p></td>
+                                <td><p></p></td>
                                 <td>
                                     <button className="grey">許可</button>
                                     <button className="green">詳細</button>
@@ -293,4 +236,4 @@ class Dashboard extends Component{
     }
 }
 
-export default Dashboard
+export default MemberManage

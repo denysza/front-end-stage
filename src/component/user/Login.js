@@ -6,7 +6,7 @@ import Footer from '../../layout/Footer.js';
 import './../../asset/main.css';
 import './../../asset/registration.css';
 
-class Registration extends Component{
+class Login extends Component{
     
     render(){
         return(
@@ -24,12 +24,8 @@ class Registration extends Component{
                   <img src="image/01.jpg" alt="video_sharing" />
                   <div className="box_card">
                       <div className="card_inner">
-                          <h1>会員登録</h1>
+                          <h1>ログイン</h1>
                           <form action="" method="post" enctype="form-data/multipart">
-                              <div className="input_element">
-                                  <label for="nickName">ニックネーム</label>
-                                  <input id="nickName" name="nickName" value="" placeholder="例：山田" />
-                              </div>
                               <div className="input_element">
                                   <label for="mailAddress">メールアドレス</label>
                                   <input id="mailAddress" name="mailAddress" value="" placeholder="例：example@email.com" />
@@ -38,13 +34,8 @@ class Registration extends Component{
                                   <label for="password">パスワード</label>
                                   <input id="password" name="password" value="" />
                               </div>
-                              <div className="input_element">
-                                  <label for="repass">パスワード（再入力）</label>
-                                  <input id="repass" name="repass" value="" />
-                                  <p>半角英数字8文字以上でご入力ください。</p>
-                              </div>
                               <div className='button_outline general_button_outline' onClick={{}}>
-                                <div>会員登録</div>
+                                <div>ログイン</div>
                               </div>
                           </form>
                       </div>
@@ -56,4 +47,4 @@ class Registration extends Component{
     }
 }
 
-export default Registration
+export default Login
