@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Homepage from './component/user/Homepage';
 import AdminDashboard from './component/admin/Dashboard';
 import VideoDetail from './component/user/VideoDetail';
+import VideoUpload from './component/user/VideoUpload';
 import Registration from './component/user/Registration';
 import Login from './component/user/Login';
 import Mypage from './component/user/Mypage';
@@ -21,6 +22,7 @@ class Routes extends React.Component {
             <Switch>
                 <Route exact path='/' component={Homepage}/>
                 <Route exact path='/video_detail' component={VideoDetail} />
+                <Route exact path='/video_upload' component={VideoUpload} />
                 <Route exact path='/registration' component={Registration} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/mypage' component={Mypage} />

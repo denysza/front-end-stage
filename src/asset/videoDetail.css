@@ -68,10 +68,6 @@
     justify-content: space-between;
     color: #F9F4AA;
 }
-/* .info_value span {
-    color: #EB4444;
-    font-size: 1.4em;
-} */
 .comment_box {
     background-color: #FBFBFB;
     border: #707070 1px solid;
@@ -99,4 +95,11 @@
 }
 .pagination {
     margin-right: 0;
+}
+
+.vid_screen {
+    width: 70%;
+    margin: auto;
+    outline: 1.5px white solid;
+    outline-offset: -5px;
 }

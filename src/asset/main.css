@@ -30,6 +30,7 @@ label {
     border-radius: 8px;
     border: #BDD0CC 1px solid;
     background: rgba(0, 0, 0, 0.9);
+    color: white;
 }
 ::placeholder { 
   color: #BDD0CC;
@@ -43,6 +44,7 @@ label {
     transform: translateX(-50%);
     left: 50%;
     border-radius: 10px;
+    z-index: 100;
 }
 .card_inner {
     padding: 40px 20px;
