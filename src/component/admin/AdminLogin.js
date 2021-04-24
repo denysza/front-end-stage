@@ -2,10 +2,76 @@
 
 import React, { Component } from 'react';
 import './../../asset/manage.css';
+import axios from 'axios';
+import {
+    Box,
+    Button,
+    Container,
+    Typography,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    Slide,
+} from '@material-ui/core';
+
+const baseurl = process.env.REACT_APP_BASE_URL;
+
+const Transitionalert = React.forwardRef(function Transition(props, ref) {
+   return <Slide direction="up" ref={ref} {...props} />;
+});
 
 class AdminLogin extends Component{
 
+    constructor(props) {
+    super(props);
+    this.state={
+        Alertmodal:false,
+        alertTitle:"",
+        alertContent:"",
+    }
+    }
+
+    handleLogin = (event)=>{
+        event.preventDefault();
+        var Email =  document.getElementById('email').value;
+        var password = document.getElementById("password").value;
+  
+        if(Email && password){        
+            var data = JSON.stringify({"email":Email,"password":password});        
+            var config = {
+              method: 'post',
+              url: `${baseurl}/api/adminlogin`,
+              headers: { 
+                'Content-Type': 'application/json'
+              },
+              data : data
+            };
+            axios(config)
+            .then((response)=>{
+                localStorage.setItem("userData", JSON.stringify(response.data))
+                window.location.assign('/admin/dashboard');
+            })
+            .catch((error)=>{
+              this.setState({
+                alertTitle:"失敗",
+                alertContent:"ログインに失敗しました。",
+                Alertmodal:true,
+              }); 
+            });
+        }
+       
+    }
+
+    handleCloseAlertModal =(event)=>{
+     this.setState({
+        Alertmodal:false
+     });
+    }
+    
+
     render(){
+        const{alertTitle,alertContent,Alertmodal}=this.state
         return(
             <>
                 <header></header>
@@ -13,24 +79,45 @@ class AdminLogin extends Component{
                     <div className="login_inner">
                         <h1></h1>
                         <h1>ログイン</h1>
-                        <form action="" method="post" enctype="form-data/multipart">
+                        <form>
                             <div className="input_element">
-                                <label for="mailAddress">メールアドレス</label>
-                                <input id="mailAddress" name="mailAddress" value="" placeholder="例：example@email.com" />
+                                <label htmlFor="mailAddress">メールアドレス</label>
+                                <input id="email" name="email" placeholder="例：example@email.com" />
                             </div>
                             <div className="input_element">
-                                <label for="password">パスワード</label>
-                                <input id="password" name="password" value="" />
+                                <label htmlFor="password">パスワード</label>
+                                <input id="password" name="password"/>
                             </div>
-                            <div className='button_outline general_button_outline' onClick={{}}>
+                            <div className='button_outline general_button_outline' onClick={this.handleLogin}>
                             <div>ログイン</div>
                             </div>
                         </form>
                     </div> 
                 </div>
+
+                <Dialog
+                    className="alert-modal"
+                    open={Alertmodal}
+                    TransitionComponent={Transitionalert}
+                    keepMounted
+                    onClose={this.handleCloseAlertModal}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle id="alert-dialog-slide-title" style={{textAlign:"center"}}>{alertTitle}</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        {alertContent}
+                    </DialogContentText>
+                    <div className="search-btn">
+                        <Button onClick={this.handleCloseAlertModal} className="btn btn-search">
+                            確認
+                        </Button>
+                    </div>
+                    </DialogContent>
+                </Dialog>
             </>
         )
     }
 }
-
 export default AdminLogin

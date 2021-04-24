@@ -2,28 +2,185 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+import { NavLink as RouterLink } from 'react-router-dom';
 import './../../asset/manage.css';
+import axios from 'axios';
+const baseurl = process.env.REACT_APP_BASE_URL;
 
 class MemberManage extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            filter: {
+                Keywords: "",
+                PageSize: 10,
+                PageNumber: 1,
+                sortKey:"",
+                sortType:"",
+            },
+            pageCount:0,
+            totalRecords:0,
+            users:[],
+        }
+    }
+
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
+    }
+
+    componentDidMount()
+    {
+      const {filter} = this.state; 
+      this.getdata(filter);
+    }
+
+    handlePagenation = (events,PageNumber)=>{
+        const {filter} = this.state;
+        filter.PageNumber = PageNumber;
+        this.setState({
+            filter:filter
+        });
+        this.getdata(filter);
+    }
+
+    getdata(filter){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var data = new Array();
+        console.log(filter)
+        var config = {
+          method: 'post',
+          url: `${baseurl}/api/users`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : filter
+        };
+        
+        axios(config)
+        .then((response) => {
+            console.log(response);
+            var userdata = response.data.users;
+            var pageCount = response.data.pageCount;
+            var totalRecords = response.data.totalRecord;
+            this.setState({
+                pageCount: pageCount,
+                totalRecords:totalRecords,
+                users:userdata
+            });           
+        })
+        .catch((error)=> {
+            filter.PageNumber=1;
+            this.setState({
+                pageCount: 0,
+                totalRecords:0,
+                users:[],
+                filter:filter
+            });
+        });
+    }
+
+    handleFreezing(userid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'get',
+          url: `${baseurl}/api/userfreezing/${userid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+
+    handlePermit(userid)
+    {
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'get',
+          url: `${baseurl}/api/userpermit/${userid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+    
+    handleDeleteuser(userid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'delete',
+          url: `${baseurl}/api/user/${userid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
 
     render(){
+        const {users, pageCount, totalRecords,filter}=this.state
+        const {PageNumber,PageSize}=filter;
+
         return(
             <>
                 <header>
-                    <p>ログアウト</p>
+                    <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                 </header>
                 <div className="sidebar">
                     <div className="sidebar_tab">
-                        <div className="tab active">
-                            <img src="image/man.png" alt="" />
+                        <div className="tab active" onClick={()=>window.location.assign("/admin/member_manage")} >
+                            <img src="/image/man.png" alt="" />
                             <h3>会員管理</h3>
                         </div>
-                        <div className="tab">
-                            <img src="image/film.png" alt="" />
+                        <div className="tab " onClick={()=>window.location.assign("/admin/dashboard")}>
+                            <img src="/image/film.png" alt="" />
                             <h3>動画管理</h3>
                         </div>
-                        <div className="tab">
-                            <img src="image/key.png" alt="" />
+                        <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
+                            <img src="/image/key.png" alt="" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -37,7 +194,7 @@ class MemberManage extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="image/search.svg" className="searchImage_m" onClick={this.focusInput} />
+                                        <img src="/image/search.svg" className="searchImage_m" onClick={this.focusInput} />
                                         <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
                                     </div>
                                     <div className='button_outline_m' onClick={{}}>
@@ -48,11 +205,11 @@ class MemberManage extends Component{
                             <div className="arrange_group_m">
                                 <div className="arrange_box_m">
                                     <div>共有件数</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" onClick={{}} />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>新着</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" onClick={{}} />
                                 </div>
                             </div>
                         </div>
@@ -65,164 +222,26 @@ class MemberManage extends Component{
                                 <th>備考</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>山田太郎</p>
-                                </td>
-                                <td><p>example@email.com</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25件</p></td>
-                                <td><p></p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
+                            {users.map((user) => (
+                                <tr>
+                                    <td>
+                                        <p>{user.nickname}</p>
+                                    </td>
+                                    <td><p>{user.email}</p></td>
+                                    <td><p>{user.regDate.substr(0, 10)}</p></td>
+                                    <td><p>{user.uploadnumber}件</p></td>
+                                    <td><p></p></td>
+                                    <td>
+                                        <button className="grey" onClick={()=>{user.is_active?this.handleFreezing(user.id):this.handlePermit(user.id)}} >{user.is_active?"凍結":"許可"}</button>
+                                        <button className="green">詳細</button>
+                                        <button className="red" onClick={()=>{this.handleDeleteuser(user.id)}}>削除</button>
+                                    </td>
+                                </tr>
+                            ))}
                         </table>
                         <div className="pagination">
-                            <div>600 件中 1 から 15 まで表示</div>
-                            <Pagination count={150} variant="outlined" shape="rounded"color="primary" />
+                            <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber==pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
+                            <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
                         </div>
                     </div>
                 </div>

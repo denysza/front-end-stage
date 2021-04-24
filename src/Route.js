@@ -13,9 +13,12 @@ import AdminLogin from './component/admin/AdminLogin';
 import MemberManage from './component/admin/MemberManage';
 import MemberDetail from './component/admin/MemberDetail';
 import ManagePassword from './component/admin/ManagePassword';
-
+import { Redirect } from 'react-router-dom';
 class Routes extends React.Component {
+  
   render() {
+     var userData =  JSON.parse(localStorage.getItem("userData")) || null;
+     const usrertype = userData ? userData.usertype : null;
     return (
         <Router>
             <Switch>
@@ -25,11 +28,11 @@ class Routes extends React.Component {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/mypage' component={Mypage} />
                 <Route exact path='/admin' component={AdminLogin}/>
-                <Route exact path='/dashboard' component={AdminDashboard}/>
-                <Route exact path='/admin_video_detail' component={adminVideoDetail}/>
-                <Route exact path='/member_manage' component={MemberManage}/>
-                <Route exact path='/member_detail' component={MemberDetail}/>
-                <Route exact path='/manage_password' component={ManagePassword}/>
+                {usrertype=='admin'?<Route exact path='/admin/dashboard' component={AdminDashboard}/>:<Redirect to="/" />}
+                {usrertype=='admin'?<Route exact path='/admin/admin_video_detail/:id' component={adminVideoDetail}/>:<Redirect to="/" />}
+                {usrertype=='admin'?<Route exact path='/admin/member_manage' component={MemberManage}/>:<Redirect to="/" />}
+                {usrertype=='admin'?<Route exact path='/admin/member_detail/:id' component={MemberDetail}/>:<Redirect to="/" />}
+                {usrertype=='admin'?<Route exact path='/admin/manage_password' component={ManagePassword}/>:<Redirect to="/" />}
                 <Route component={NotFound} />
             </Switch>
         </Router>

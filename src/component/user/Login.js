@@ -2,13 +2,74 @@
 
 import React, { Component } from 'react';
 import Footer from '../../layout/Footer.js';
-
 import './../../asset/main.css';
 import './../../asset/registration.css';
+import axios from 'axios';
+import {
+    Box,
+    Button,
+    Container,
+    Typography,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    Slide,
+} from '@material-ui/core';
 
-class Login extends Component{
-    
+const baseurl = process.env.REACT_APP_BASE_URL;
+const Transitionalert = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+ });
+
+class Login extends Component{   
+    constructor(props) {
+        super(props);
+        this.state={
+            Alertmodal:false,
+            alertTitle:"",
+            alertContent:"",
+        }
+    }
+
+    handleLogin = (event)=>{
+        event.preventDefault();
+        var Email =  document.getElementById('email').value;
+        var password = document.getElementById("password").value;
+  
+        if(Email && password){        
+            var data = JSON.stringify({"email":Email,"password":password});        
+            var config = {
+              method: 'post',
+              url: `${baseurl}/api/login`,
+              headers: { 
+                'Content-Type': 'application/json'
+              },
+              data : data
+            };
+            axios(config)
+            .then((response)=>{
+                localStorage.setItem("userData", JSON.stringify(response.data))
+                window.location.assign('/mypage');
+            })
+            .catch((error)=>{
+              this.setState({
+                alertTitle:"失敗",
+                alertContent:"ログインに失敗しました。",
+                Alertmodal:true,
+              }); 
+            });
+        }
+    }
+
+    handleCloseAlertModal =(event)=>{
+     this.setState({
+        Alertmodal:false
+     });
+    }
+
     render(){
+        const{alertTitle,alertContent,Alertmodal}=this.state
         return(
             <>
                 <div className="header">
@@ -17,24 +78,24 @@ class Login extends Component{
                           <img src="image/heart.svg" />
                       </div>
                       <div className="menu">
-                          <a href=""><h3>ログイン</h3></a>
-                          <a href=""><h3>会員登録</h3></a>
+                          <a href="/login"><h3>ログイン</h3></a>
+                          <a href="/registration"><h3>会員登録</h3></a>
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
                   <div className="box_card">
                       <div className="card_inner">
                           <h1>ログイン</h1>
-                          <form action="" method="post" enctype="form-data/multipart">
+                          <form>
                               <div className="input_element">
-                                  <label for="mailAddress">メールアドレス</label>
-                                  <input id="mailAddress" name="mailAddress" value="" placeholder="例：example@email.com" />
+                                  <label htmlFor="mailAddress">メールアドレス</label>
+                                  <input id="email" name="mailAddress" placeholder="例：example@email.com" />
                               </div>
                               <div className="input_element">
-                                  <label for="password">パスワード</label>
-                                  <input id="password" name="password" value="" />
+                                  <label htmlFor="password">パスワード</label>
+                                  <input id="password" name="password"/>
                               </div>
-                              <div className='button_outline general_button_outline' onClick={{}}>
+                              <div className='button_outline general_button_outline' onClick={this.handleLogin}>
                                 <div>ログイン</div>
                               </div>
                           </form>
@@ -42,6 +103,27 @@ class Login extends Component{
                   </div>
                 </div>
                 <Footer />
+                <Dialog
+                    className="alert-modal"
+                    open={Alertmodal}
+                    TransitionComponent={Transitionalert}
+                    keepMounted
+                    onClose={this.handleCloseAlertModal}
+                    aria-labelledby="alert-dialog-slide-title"
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <DialogTitle id="alert-dialog-slide-title" style={{textAlign:"center"}}>{alertTitle}</DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-slide-description">
+                        {alertContent}
+                    </DialogContentText>
+                    <div className="search-btn">
+                        <Button onClick={this.handleCloseAlertModal} className="btn btn-search">
+                            確認
+                        </Button>
+                    </div>
+                    </DialogContent>
+                </Dialog>
             </>
         )
     }

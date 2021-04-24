@@ -26,23 +26,23 @@ class Homepage extends Component{
               <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img src="image/heart.svg" />
+                          <img src="/image/heart.svg" />
                       </div>
                       <div className="menu">
-                          <a href=""><h3>ログイン</h3></a>
-                          <a href=""><h3>会員登録</h3></a>
+                          <a href="/login"><h3>ログイン</h3></a>
+                          <a href="/registration"><h3>会員登録</h3></a>
                       </div>
                   </div>
-                  <img src="image/01.jpg" alt="video_sharing" />
-                  <img className="share_button sp" onClick={{}} src="image/button.svg" />
+                  <img src="/image/01.jpg" alt="video_sharing" />
+                  <img className="share_button sp" onClick={{}} src="/image/button.svg" />
               </div>
               <div className="banner">
-                <img className="share_button pc" onClick={{}} src="image/button.svg" />
+                <img className="share_button pc" onClick={{}} src="/image/button.svg" />
                 <div className="select_group">
                     <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                         <div className='search'>
                             <div className='search_box'>
-                                <img src="image/search.svg" className="searchImage" onClick={this.focusInput} />
+                                <img src="/image/search.svg" className="searchImage" onClick={this.focusInput} />
                                 <input id="search_input" type="text" className="search_text" name="search_keyword"></input>
                             </div>
                             <div className='button_outline' onClick={{}}>
@@ -60,15 +60,15 @@ class Homepage extends Component{
                         </select>
                         <div className="arrange_box">
                             <div>評価</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
                         </div>
                         <div className="arrange_box">
                             <div>人気</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
                         </div>
                         <div className="arrange_box">
                             <div>新着</div>
-                            <img src="image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
                         </div>
                     </div>
                 </div>

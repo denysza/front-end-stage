@@ -2,28 +2,34 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
+import { NavLink as RouterLink } from 'react-router-dom';
 import './../../asset/manage.css';
 
 class Dashboard extends Component{
+    
+   handleLogout = (event)=>{
+    localStorage.removeItem("userData");
+    window.location.assign('/');
+   }
 
     render(){
         return(
             <>
                 <header>
-                    <p>ログアウト</p>
+                    <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                 </header>
                 <div className="sidebar">
                     <div className="sidebar_tab">
-                        <div className="tab">
-                            <img src="image/man.png" alt="" />
+                        <div className="tab" onClick={()=>window.location.assign("/admin/member_manage")} >
+                            <img src="/image/man.png" alt="" />
                             <h3>会員管理</h3>
                         </div>
-                        <div className="tab active">
-                            <img src="image/film.png" alt="" />
+                        <div className="tab active" onClick={()=>window.location.assign("/admin/dashboard")}>
+                            <img src="/image/film.png" alt="" />
                             <h3>動画管理</h3>
                         </div>
-                        <div className="tab">
-                            <img src="image/key.png" alt="" />
+                        <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
+                            <img src="/image/key.png" alt="" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -37,10 +43,10 @@ class Dashboard extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="image/search.svg" className="searchImage_m" onClick={this.focusInput} />
+                                        <img src="/image/search.svg" className="searchImage_m" />
                                         <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
                                     </div>
-                                    <div className='button_outline_m' onClick={{}}>
+                                    <div className='button_outline_m' >
                                         <div>検索</div>
                                     </div>
                                 </div>
@@ -55,15 +61,15 @@ class Dashboard extends Component{
                                 </select>
                                 <div className="arrange_box_m">
                                     <div>評価</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>人気</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>新着</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                             </div>
                             </div>
@@ -79,187 +85,7 @@ class Dashboard extends Component{
                             <tr>
                                 <td>
                                     <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
+                                        <img src="/image/business.png" alt="" />
                                         <div>
                                             <p>動画タイトル</p>
                                             <p>山田太郎</p>

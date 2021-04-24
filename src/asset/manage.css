@@ -44,7 +44,7 @@ footer {
     min-height: 100vh;
     background-color: #0E0E3E;
     color: #F9F4AA;
-    z-index: -1000;
+    
 }
 footer .copyright {
     margin-top: 70px;

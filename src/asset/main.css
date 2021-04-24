@@ -30,6 +30,7 @@ label {
     border-radius: 8px;
     border: #BDD0CC 1px solid;
     background: rgba(0, 0, 0, 0.9);
+    color: white;
 }
 ::placeholder { 
   color: #BDD0CC;
@@ -110,6 +111,7 @@ input, select {
     display: flex;
     background-color: black;
     position: relative;
+    z-index: -1;
 }
 .footer_img img {
     width: 50%;
@@ -227,6 +229,29 @@ input, select {
         min-height: 200px;
     }
 }
+
+.alert-modal .MuiDialog-paper{
+    width: 700px !important;
+    max-width: 695px !important;
+}
+
+.btn-search{
+    background-color:rgb(234, 85, 20) !important;
+    color: white !important;
+    margin: 10px !important;
+    margin-right: 0px !important; 
+    width: 120px !important;
+}
+
+.search-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logoutbtn{
+    cursor: pointer;
+}
+
 @media (max-width: 500px) {
     .pc {
         display: none;
