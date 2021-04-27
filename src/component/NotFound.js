@@ -13,7 +13,7 @@ class NotFound extends Component{
                 <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img src="/image/heart.svg" />
+                          <img alt="" src="/image/heart.svg" />
                       </div>
                       <div className="menu">
                           <a href=""><h3>ログイン</h3></a>

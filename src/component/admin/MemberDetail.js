@@ -57,7 +57,7 @@ class MemberDetail extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="/image/search.svg" className="searchImage_m" onClick={this.focusInput} />
+                                        <img alt="" src="/image/search.svg" className="searchImage_m" onClick={this.focusInput} />
                                         <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
                                     </div>
                                     <div className='button_outline_m'>
@@ -75,15 +75,15 @@ class MemberDetail extends Component{
                                 </select>
                                 <div className="arrange_box_m">
                                     <div>評価</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>人気</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>新着</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m"/>
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m"/>
                                 </div>
                             </div>
                             </div>

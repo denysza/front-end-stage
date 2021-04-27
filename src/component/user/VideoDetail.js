@@ -15,7 +15,7 @@ class VideoDetail extends Component{
                 <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img src="image/heart.svg" />
+                          <img alt="" src="image/heart.svg" />
                       </div>
                       <div className="menu">
                           <a href=""><h3>ログイン</h3></a>
@@ -23,8 +23,8 @@ class VideoDetail extends Component{
                       </div>
                   </div>
                   <img src="image/business.png" alt="video_sharing" />
-                  <img className="detail_share_button"  src="image/button.svg" />
-                  <img className="play_button" src="image/play.svg" />
+                  <img alt="" className="detail_share_button"  src="image/button.svg" />
+                  <img alt="" className="play_button" src="image/play.svg" />
                   <div className="evaluation">
                     <img src="image/heart.svg" alt="heart" className="heart" />
                     <div className="heart_text">15</div>
