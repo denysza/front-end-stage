@@ -4,10 +4,7 @@ import React, { Component } from 'react';
 import './../../asset/manage.css';
 import axios from 'axios';
 import {
-    Box,
     Button,
-    Container,
-    Typography,
     Dialog,
     DialogTitle,
     DialogContent,

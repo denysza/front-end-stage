@@ -2,10 +2,10 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
-import { NavLink as RouterLink } from 'react-router-dom';
+
 import './../../asset/manage.css';
 import axios from 'axios';
-import { ThreeSixtySharp, TransferWithinAStationSharp } from '@material-ui/icons';
+
 const baseurl = process.env.REACT_APP_BASE_URL;
 
 class MemberManage extends Component{
@@ -50,7 +50,6 @@ class MemberManage extends Component{
     getdata(filter){
         var userData = JSON.parse(localStorage.userData);
         var token = userData.token;
-        var data = new Array();
         console.log(filter)
         var config = {
           method: 'post',
@@ -102,7 +101,7 @@ class MemberManage extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -149,7 +148,7 @@ class MemberManage extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -201,7 +200,7 @@ class MemberManage extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -221,15 +220,15 @@ class MemberManage extends Component{
                 <div className="sidebar">
                     <div className="sidebar_tab">
                         <div className="tab active" onClick={()=>window.location.assign("/admin/member_manage")} >
-                            <img src="/image/man.png" alt="" />
+                            <img src="/image/man.png" alt="a" />
                             <h3>会員管理</h3>
                         </div>
                         <div className="tab " onClick={()=>window.location.assign("/admin/dashboard")}>
-                            <img src="/image/film.png" alt="" />
+                            <img src="/image/film.png" alt="a" />
                             <h3>動画管理</h3>
                         </div>
                         <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
-                            <img src="/image/key.png" alt="" />
+                            <img src="/image/key.png" alt="a" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -243,7 +242,7 @@ class MemberManage extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="/image/search.svg" className="searchImage_m" onClick={this.focusInput} />
+                                        <img src="/image/search.svg" alt="" className="searchImage_m" onClick={this.focusInput} />
                                         <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text_m" name="search_keyword" />
                                     </div>
                                     <div className='button_outline_m' onClick={this.handleSerach}>
@@ -254,11 +253,11 @@ class MemberManage extends Component{
                             <div className="arrange_group_m">
                                 <div className="arrange_box_m" onClick={this.handleSortNum}>
                                     <div>共有件数</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
+                                    <img src="/image/arrange.svg" alt="" className="arrangeImage_m" />
                                 </div>
                                 <div className="arrange_box_m" onClick={this.handleSortRegdate}>
                                     <div>新着</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
+                                    <img src="/image/arrange.svg" alt="" className="arrangeImage_m"  />
                                 </div>
                             </div>
                         </div>
@@ -289,7 +288,7 @@ class MemberManage extends Component{
                             ))}
                         </table>
                         <div className="pagination">
-                            <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber==pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
+                            <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
                             <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
                         </div>
                     </div>

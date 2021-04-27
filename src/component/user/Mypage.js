@@ -19,7 +19,7 @@ class Registration extends Component{
                 <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img src="image/heart.svg" />
+                          <img alt="" src="image/heart.svg" />
                       </div>
                       <div className="menu">
                         <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
@@ -42,7 +42,7 @@ class Registration extends Component{
                               <span>パスワード</span>
                               <span>mo****!12****hj</span>
                           </div>
-                          <div className='button_outline general_button_outline' onClick={{}}>
+                          <div className='button_outline general_button_outline' >
                             <div>登録情報変更</div>
                           </div>
                       </div>
@@ -53,7 +53,7 @@ class Registration extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a"  />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -74,7 +74,7 @@ class Registration extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a" />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -95,7 +95,7 @@ class Registration extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a"  />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -116,7 +116,7 @@ class Registration extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a" />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>

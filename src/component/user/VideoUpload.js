@@ -1,6 +1,4 @@
 
-
-import { duration } from '@material-ui/core';
 import React, { Component } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -9,16 +7,8 @@ import './../../asset/main.css';
 import './../../asset/videoDetail.css';
 
 import axios from 'axios';
-import {
-
-    Slide,
-} from '@material-ui/core';
-import { TransferWithinAStationSharp } from '@material-ui/icons';
 
 const baseurl = process.env.REACT_APP_BASE_URL;
-const Transitionalert = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
- });
 
 const animatedComponents = makeAnimated();
 
@@ -50,7 +40,6 @@ class VideoDetail extends Component{
     updateVideo=(event)=> {
         let fileObj = event.target.files[0];
         var unitlist = ["byte","KB","MB","GB"];
-        var temp={};
         let unit = 0;
         let size =parseInt(fileObj.size);
         while(size > 1000)
@@ -76,7 +65,6 @@ class VideoDetail extends Component{
     }   
    
     getVideoImage(path, secs,callback) {
-        var me = this;
         let video = document.createElement('video');      
         video.onloadedmetadata = function() {
           if ('function' === typeof secs) {
@@ -181,7 +169,7 @@ class VideoDetail extends Component{
             })
           }).catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -207,7 +195,7 @@ class VideoDetail extends Component{
                       <div className="card_inner">
                           <h1>動画登録</h1>
                           <form action="" method="post" enctype="form-data/multipart">
-                              {this.state.videoPrevimg?<img src={this.state.videoPrevimg} alt="" className="vid_screen"/>:<img src="/image/business.png" alt="" className="vid_screen"/>}
+                              {this.state.videoPrevimg?<img src={this.state.videoPrevimg} alt="a" className="vid_screen"/>:<img src="/image/business.png" alt="a" className="vid_screen"/>}
                               <input type="file" onChange={this.updateVideo} ref={(ref) => this.upload = ref} style={{ display: 'none' }} multiple />
                               <div className='button_outline general_button_outline' onClick={(e) => this.upload.click() }>
                                 <div>ファイル選択</div>

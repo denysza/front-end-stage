@@ -4,9 +4,9 @@ class Footer extends Component {
     render() {
         return(
             <>
-                <div className="footer_img">
-                    <img src="image/02.jpg"></img>
-                    <img src="image/03.jpg"></img>
+                <div className="footer_img" >
+                    <img src="/image/02.jpg" alt="a" />
+                    <img src="/image/03.jpg" alt="a"/>
                 </div>
                 <div className="footer_bar">
                     <div className="footer_nav">
@@ -15,11 +15,11 @@ class Footer extends Component {
                         <a href="">特定商取引に基づく表記</a>
                     </div>
                     <div className="social_link">
-                        <img src="image/facebook.png"></img>
-                        <img src="image/instagram.png"></img>
-                        <img src="image/twitter.png"></img>
-                        <img src="image/line.png"></img>
-                        <img src="image/google.png"></img>
+                        <img src="/image/facebook.png" alt="a" />
+                        <img src="/image/instagram.png" alt="a" />
+                        <img src="/image/twitter.png" alt="a"/>
+                        <img src="/image/line.png" alt="a"/>
+                        <img src="/image/google.png" alt="a"/>
                     </div>
                     <div className="copyright">
                         <p>Copyright 2021 株式会社TSC</p>

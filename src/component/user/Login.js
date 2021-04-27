@@ -6,10 +6,7 @@ import './../../asset/main.css';
 import './../../asset/registration.css';
 import axios from 'axios';
 import {
-    Box,
     Button,
-    Container,
-    Typography,
     Dialog,
     DialogTitle,
     DialogContent,

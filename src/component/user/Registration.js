@@ -6,10 +6,7 @@ import axios from 'axios';
 import './../../asset/main.css';
 import './../../asset/registration.css';
 import {
-    Box,
     Button,
-    Container,
-    Typography,
     Dialog,
     DialogTitle,
     DialogContent,
@@ -76,7 +73,7 @@ class Registration extends Component{
             });
             return;
         }
-        if(Password!=ConfirmPassword)
+        if(Password!==ConfirmPassword)
         {
             this.setState({
                 alertTitle:"失敗",

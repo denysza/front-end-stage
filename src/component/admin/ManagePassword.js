@@ -19,15 +19,15 @@ class ManagePassword extends Component{
                 <div className="sidebar">
                     <div className="sidebar_tab">
                         <div className="tab" onClick={()=>window.location.assign("/admin/member_manage")} >
-                            <img src="/image/man.png" alt="" />
+                            <img src="/image/man.png" alt="a" />
                             <h3>会員管理</h3>
                         </div>
                         <div className="tab" onClick={()=>window.location.assign("/admin/dashboard")}>
-                            <img src="/image/film.png" alt="" />
+                            <img src="/image/film.png" alt="a" />
                             <h3>動画管理</h3>
                         </div>
                         <div className="tab active" onClick={()=>window.location.assign("/admin/manage_password")}>
-                            <img src="/image/key.png" alt="" />
+                            <img src="/image/key.png" alt="a" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>

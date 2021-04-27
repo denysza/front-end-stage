@@ -1,7 +1,6 @@
 
 
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../../layout/Footer.js';
 
@@ -24,8 +23,8 @@ class VideoDetail extends Component{
                       </div>
                   </div>
                   <img src="image/business.png" alt="video_sharing" />
-                  <img className="detail_share_button" onClick={{}} src="image/button.svg" />
-                  <img className="play_button" onClick={{}} src="image/play.svg" />
+                  <img className="detail_share_button"  src="image/button.svg" />
+                  <img className="play_button" src="image/play.svg" />
                   <div className="evaluation">
                     <img src="image/heart.svg" alt="heart" className="heart" />
                     <div className="heart_text">15</div>
@@ -34,10 +33,10 @@ class VideoDetail extends Component{
                 <div className="detail_banner">
                     <div className="mark">
                         <div>
-                            <div className='button_outline' onClick={{}}>
+                            <div className='button_outline'>
                                 <div>おすすめ</div>
                             </div>
-                            <div className='button_outline' onClick={{}}>
+                            <div className='button_outline'>
                                 <div>コメント追加</div>
                             </div>
                         </div>

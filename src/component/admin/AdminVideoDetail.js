@@ -20,15 +20,15 @@ class AdminVideoDetail extends Component{
                 <div className="sidebar">
                     <div className="sidebar_tab">
                         <div className="tab" onClick={()=>window.location.assign("/admin/member_manage")} >
-                            <img src="/image/man.png" alt="" />
+                            <img src="/image/man.png" alt="a" />
                             <h3>会員管理</h3>
                         </div>
                         <div className="tab active" onClick={()=>window.location.assign("/admin/dashboard")}>
-                            <img src="/image/film.png" alt="" />
+                            <img src="/image/film.png" alt="a" />
                             <h3>動画管理</h3>
                         </div>
                         <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
-                            <img src="/image/key.png" alt="" />
+                            <img src="/image/key.png" alt="a" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -39,7 +39,7 @@ class AdminVideoDetail extends Component{
                 <div className="content">
                     <div className="manage_card">
                         <div className="video_detail">
-                            <img src="image/business.png" alt=""/>
+                            <img src="image/business.png" alt="a"/>
                             <div>
                                 <div className="info_type">
                                     <p>動画タイトル  &nbsp;&nbsp;:</p>
@@ -59,10 +59,10 @@ class AdminVideoDetail extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="image/search.svg" className="searchImage_m" onClick={this.focusInput} />
+                                        <img alt="" src="image/search.svg" className="searchImage_m" onClick={this.focusInput} />
                                         <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
                                     </div>
-                                    <div className='button_outline_m' onClick={{}}>
+                                    <div className='button_outline_m'>
                                         <div>検索</div>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@ class AdminVideoDetail extends Component{
                             <div className="arrange_group_m">
                                 <div className="arrange_box_m">
                                     <div>新着</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img alt="" src="image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                             </div>
                         </div>

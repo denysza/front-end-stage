@@ -2,11 +2,6 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import Button from '@material-ui/core/Button';
 
 import './../../asset/manage.css';
 
@@ -26,15 +21,15 @@ class MemberDetail extends Component{
                 <div className="sidebar">
                     <div className="sidebar_tab">
                         <div className="tab active" onClick={()=>window.location.assign("/admin/member_manage")} >
-                            <img src="/image/man.png" alt="" />
+                            <img src="/image/man.png" alt="a" />
                             <h3>会員管理</h3>
                         </div>
                         <div className="tab " onClick={()=>window.location.assign("/admin/dashboard")}>
-                            <img src="/image/film.png" alt="" />
+                            <img src="/image/film.png" alt="a" />
                             <h3>動画管理</h3>
                         </div>
                         <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
-                            <img src="/image/key.png" alt="" />
+                            <img src="/image/key.png" alt="a" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -104,7 +99,7 @@ class MemberDetail extends Component{
                             <tr>
                                 <td>
                                     <div>
-                                        <img src="/image/business.png" alt="" />
+                                        <img src="/image/business.png" alt="a" />
                                         <p>動画タイトル</p>
                                     </div>
                                 </td>

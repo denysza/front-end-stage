@@ -23,8 +23,8 @@ class NotFound extends Component{
                   <img src="/image/01.jpg" alt="video_sharing" />
                   <div className="box_card">
                       <div className="card_inner notfound">
-                          <img src="/image/404.png" alt="" />
-                          <div className='button_outline general_button_outline' onClick={{}}>
+                          <img src="/image/404.png" alt="a" />
+                          <div className='button_outline general_button_outline' >
                             <div>トップページ</div>
                           </div>
 

@@ -1,20 +1,12 @@
 
 
 import React, { Component } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import Footer from '../../layout/Footer.js';
 
 import './../../asset/main.css';
 import './../../asset/home.css';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        marginTop: theme.spacing(2),
-      },
-    },
-}));
 
 class Homepage extends Component{
   
@@ -29,13 +21,13 @@ class Homepage extends Component{
     
     render(){
         let userData =  JSON.parse(localStorage.getItem("userData")) || null;
-        let usrertype = userData ? userData.usertype : null;
+        // let usrertype = userData ? userData.usertype : null;
         return(
             <>
               <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img src="/image/heart.svg" />
+                          <img alt="" src="/image/heart.svg" />
                       </div>
                       {userData ?
                         <div className="menu">
@@ -48,19 +40,19 @@ class Homepage extends Component{
                         </div>
                       }
                   </div>
-                  <img src="/image/01.jpg" alt="video_sharing" />
-                  {userData&&<img className="share_button sp" onClick={this.handleUpload}  src="/image/button.svg" />}
+                  <img alt="" src="/image/01.jpg" alt="video_sharing" />
+                  {userData&&<img alt="" className="share_button sp" onClick={this.handleUpload}  src="/image/button.svg" />}
               </div>
               <div className="banner">
-              {userData&&<img className="share_button pc" onClick={this.handleUpload} src="/image/button.svg" />}
+              {userData&&<img alt="" className="share_button pc" onClick={this.handleUpload} src="/image/button.svg" />}
                 <div className="select_group">
                     <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                         <div className='search'>
                             <div className='search_box'>
-                                <img src="/image/search.svg" className="searchImage" onClick={this.focusInput} />
+                                <img alt="" src="/image/search.svg" className="searchImage" onClick={this.focusInput} />
                                 <input id="search_input" type="text" className="search_text" name="search_keyword"></input>
                             </div>
-                            <div className='button_outline' onClick={{}}>
+                            <div className='button_outline'>
                                 <div>検索</div>
                             </div>
                         </div>
@@ -75,15 +67,15 @@ class Homepage extends Component{
                         </select>
                         <div className="arrange_box">
                             <div>評価</div>
-                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage" />
                         </div>
                         <div className="arrange_box">
                             <div>人気</div>
-                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage"  />
                         </div>
                         <div className="arrange_box">
                             <div>新着</div>
-                            <img src="/image/arrange.svg" className="arrangeImage" onClick={{}} />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage"  />
                         </div>
                     </div>
                 </div>
@@ -93,7 +85,7 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a"  />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -114,7 +106,7 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a"  />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -135,7 +127,7 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img alt=""src="image/business.png" className="video_image" />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>
@@ -156,7 +148,7 @@ class Homepage extends Component{
                       <div className="video_box">
                         <div className="video_inner">
                             <div className="video_top">
-                                <img src="image/business.png" className="video_image" alt="" onClick={{}} />
+                                <img src="image/business.png" className="video_image" alt="a"  />
                                 <div className="evaluation">
                                     <img src="image/heart.svg" alt="heart" className="heart" />
                                     <div>15</div>

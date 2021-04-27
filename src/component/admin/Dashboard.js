@@ -2,21 +2,9 @@
 
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
-import { NavLink as RouterLink } from 'react-router-dom';
 import './../../asset/manage.css';
-import { getDisplayDate } from '@material-ui/pickers/_helpers/text-field-helper';
 import axios from 'axios';
-import {
-    Box,
-    Button,
-    Container,
-    Typography,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogContentText,
-    Slide,
-} from '@material-ui/core';
+
 const baseurl = process.env.REACT_APP_BASE_URL;
 
 class Dashboard extends Component{
@@ -251,7 +239,7 @@ class Dashboard extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -277,7 +265,7 @@ class Dashboard extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -303,7 +291,7 @@ class Dashboard extends Component{
         })
         .catch((error)=> {
             if (error.response) {
-                if(error.response.status==401){
+                if(error.response.status===401){
                     localStorage.removeItem("userData");
                     window.location.assign('/');
                 }
@@ -323,15 +311,15 @@ class Dashboard extends Component{
                 <div className="sidebar">
                     <div className="sidebar_tab">
                         <div className="tab" onClick={()=>window.location.assign("/admin/member_manage")} >
-                            <img src="/image/man.png" alt="" />
+                            <img src="/image/man.png" alt="a" />
                             <h3>会員管理</h3>
                         </div>
                         <div className="tab active" onClick={()=>window.location.assign("/admin/dashboard")}>
-                            <img src="/image/film.png" alt="" />
+                            <img src="/image/film.png" alt="a" />
                             <h3>動画管理</h3>
                         </div>
                         <div className="tab" onClick={()=>window.location.assign("/admin/manage_password")}>
-                            <img src="/image/key.png" alt="" />
+                            <img src="/image/key.png" alt="a" />
                             <h3>パスワード変更</h3>
                         </div>
                     </div>
@@ -345,7 +333,7 @@ class Dashboard extends Component{
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
                                     <div className='search_box_m'>
-                                        <img src="/image/search.svg" className="searchImage_m" />
+                                        <img alt="" src="/image/search.svg" className="searchImage_m" />
                                         <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text_m" name="search_keyword" />
                                     </div>
                                     <div className='button_outline_m' onClick={this.handleSerach}>
@@ -362,15 +350,15 @@ class Dashboard extends Component{
                                 </select>
                                 <div className="arrange_box_m"  onClick={this.handleSortPlayNum}>
                                     <div>再生</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                                 <div className="arrange_box_m"  onClick={this.handleSortFavNum}>
                                     <div>人気</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                                 <div className="arrange_box_m"  onClick={this.handleSortRegdate}>
                                     <div>新着</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
+                                    <img alt="" src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                             </div>
                             </div>
@@ -387,7 +375,7 @@ class Dashboard extends Component{
                                 <tr>
                                     <td>
                                         <div>
-                                            <img src={video.preveimage} alt="" />
+                                            <img src={video.preveimage} alt="a" />
                                             <div>
                                                 <p>{video.title}</p>
                                                 <p>{video.username}</p>
@@ -407,7 +395,7 @@ class Dashboard extends Component{
                             ))}
                         </table>
                         <div className="pagination">
-                        <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber==pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
+                        <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
                             <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
                         </div>
                     </div>
