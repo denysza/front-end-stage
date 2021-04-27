@@ -208,7 +208,6 @@ th {
 }
 .video td:nth-child(1) > div {
     display: flex;
-    justify-content: space-evenly;
     align-items: center ;
 }
 .comment th:nth-child(1) {
@@ -247,11 +246,14 @@ td:last-child {
 }
 td img {
     width: 100px;
-    margin: 10px 0;
+    margin: 10px 30px;
 }
 td p {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+td:nth-child(1) p {
+    max-width: 150px;
 }
 tr:nth-child(even) {
     background-color: #EFEFEF;

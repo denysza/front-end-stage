@@ -24,12 +24,12 @@ class Routes extends React.Component {
         <Router>
             <Switch>
                 <Route exact path='/' component={Homepage}/>
-                <Route exact path='/video_detail' component={VideoDetail} />
-                <Route exact path='/video_upload' component={VideoUpload} />
-                <Route exact path='/registration' component={Registration} />
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/mypage' component={Mypage} />
+                <Route exact path='/registration' component={Registration} />
+                <Route exact path='/video_detail' component={VideoDetail} />
                 <Route exact path='/admin' component={AdminLogin}/>
+                {userData?<Route exact path='/video_upload' component={VideoUpload}/>:<Redirect to="/" />}
+                {userData?<Route exact path='/mypage' component={Mypage} />:<Redirect to="/" />}
                 {usrertype=='admin'?<Route exact path='/admin/dashboard' component={AdminDashboard}/>:<Redirect to="/" />}
                 {usrertype=='admin'?<Route exact path='/admin/admin_video_detail/:id' component={adminVideoDetail}/>:<Redirect to="/" />}
                 {usrertype=='admin'?<Route exact path='/admin/member_manage' component={MemberManage}/>:<Redirect to="/" />}

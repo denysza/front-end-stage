@@ -5,6 +5,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import { NavLink as RouterLink } from 'react-router-dom';
 import './../../asset/manage.css';
 import axios from 'axios';
+import { ThreeSixtySharp, TransferWithinAStationSharp } from '@material-ui/icons';
 const baseurl = process.env.REACT_APP_BASE_URL;
 
 class MemberManage extends Component{
@@ -20,6 +21,8 @@ class MemberManage extends Component{
             },
             pageCount:0,
             totalRecords:0,
+            sortRegDate:0,
+            sortNumbers:0,
             users:[],
         }
     }
@@ -60,7 +63,7 @@ class MemberManage extends Component{
         
         axios(config)
         .then((response) => {
-            console.log(response);
+            
             var userdata = response.data.users;
             var pageCount = response.data.pageCount;
             var totalRecords = response.data.totalRecord;
@@ -107,6 +110,26 @@ class MemberManage extends Component{
         });
     }
 
+    handleSerach=(event)=>{
+        const{filter} = this.state;
+        this.getdata(filter);
+    }
+
+    handleSearchKeyword = (event)=>
+    {
+        const{filter}=this.state;
+        filter.Keywords = event.target.value;
+        this.setState({
+            filter:filter
+        })
+    }
+
+    searchbyKeywords = (e) =>{
+        e.preventDefault();
+        const{filter}=this.state;
+        this.getdata(filter);
+    }
+
     handlePermit(userid)
     {
         var userData = JSON.parse(localStorage.userData);
@@ -133,7 +156,33 @@ class MemberManage extends Component{
             }
         });
     }
-    
+
+    handleSortNum = (event) => {
+        let sortNumbers=this.state.sortNumbers;
+        const{filter} = this.state
+        sortNumbers = Math.abs(sortNumbers - 1);
+        filter.sortKey = "count";
+        filter.sortType = sortNumbers;
+        this.setState({
+            filter:filter,
+            sortNumbers:sortNumbers
+        });
+        this.getdata(filter);        
+    }
+
+    handleSortRegdate = (event) =>{
+        let sortRegDate=this.state.sortRegDate;
+        const{filter} = this.state
+        sortRegDate = Math.abs(sortRegDate - 1);
+        filter.sortKey = "regDate";
+        filter.sortType = sortRegDate;
+        this.setState({
+            filter:filter,
+            sortRegDate:sortRegDate
+        });
+        this.getdata(filter); 
+    }
+
     handleDeleteuser(userid){
         var userData = JSON.parse(localStorage.userData);
         var token = userData.token;
@@ -195,21 +244,21 @@ class MemberManage extends Component{
                                 <div className='search_m'>
                                     <div className='search_box_m'>
                                         <img src="/image/search.svg" className="searchImage_m" onClick={this.focusInput} />
-                                        <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
+                                        <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text_m" name="search_keyword" />
                                     </div>
-                                    <div className='button_outline_m' onClick={{}}>
+                                    <div className='button_outline_m' onClick={this.handleSerach}>
                                         <div>検索</div>
                                     </div>
                                 </div>
                             </form> 
                             <div className="arrange_group_m">
-                                <div className="arrange_box_m">
+                                <div className="arrange_box_m" onClick={this.handleSortNum}>
                                     <div>共有件数</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
-                                <div className="arrange_box_m">
+                                <div className="arrange_box_m" onClick={this.handleSortRegdate}>
                                     <div>新着</div>
-                                    <img src="/image/arrange.svg" className="arrangeImage_m" onClick={{}} />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
                             </div>
                         </div>

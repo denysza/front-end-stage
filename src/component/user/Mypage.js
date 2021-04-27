@@ -9,6 +9,10 @@ import './../../asset/mypage.css';
 
 class Registration extends Component{
     
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
+    }
     render(){
         return(
             <>
@@ -18,8 +22,7 @@ class Registration extends Component{
                           <img src="image/heart.svg" />
                       </div>
                       <div className="menu">
-                          <a href=""><h3>ログイン</h3></a>
-                          <a href=""><h3>会員登録</h3></a>
+                        <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />

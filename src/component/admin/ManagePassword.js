@@ -5,11 +5,16 @@ import './../../asset/manage.css';
 
 class ManagePassword extends Component{
 
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
+    }
+
     render(){
         return(
             <>
                 <header>
-                    <p>ログアウト</p>
+                    <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                 </header>
                 <div className="sidebar">
                     <div className="sidebar_tab">

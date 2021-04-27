@@ -80,15 +80,15 @@ class MemberDetail extends Component{
                                 </select>
                                 <div className="arrange_box_m">
                                     <div>評価</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>人気</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m" />
+                                    <img src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
                                 <div className="arrange_box_m">
                                     <div>新着</div>
-                                    <img src="image/arrange.svg" className="arrangeImage_m"/>
+                                    <img src="/image/arrange.svg" className="arrangeImage_m"/>
                                 </div>
                             </div>
                             </div>
@@ -104,7 +104,7 @@ class MemberDetail extends Component{
                             <tr>
                                 <td>
                                     <div>
-                                        <img src="image/business.png" alt="" />
+                                        <img src="/image/business.png" alt="" />
                                         <p>動画タイトル</p>
                                     </div>
                                 </td>
@@ -117,160 +117,7 @@ class MemberDetail extends Component{
                                     <button className="green">詳細</button>
                                     <button className="red">削除</button>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="image/business.png" alt="" />
-                                        <p>動画タイトル</p>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
+                            </tr>   
                         </table>
                         <div className="pagination">
                             <div>600 件中 1 から 15 まで表示</div>

@@ -24,12 +24,12 @@ const Transitionalert = React.forwardRef(function Transition(props, ref) {
 class AdminLogin extends Component{
 
     constructor(props) {
-    super(props);
-    this.state={
-        Alertmodal:false,
-        alertTitle:"",
-        alertContent:"",
-    }
+        super(props);
+        this.state={
+            Alertmodal:false,
+            alertTitle:"",
+            alertContent:"",
+        }
     }
 
     handleLogin = (event)=>{

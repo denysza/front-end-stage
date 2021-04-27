@@ -17,10 +17,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 class Homepage extends Component{
+  
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
+    }
+
+    handleUpload = (event)=>{
+        window.location.assign('/video_upload');
+    }
     
-
-
     render(){
+        let userData =  JSON.parse(localStorage.getItem("userData")) || null;
+        let usrertype = userData ? userData.usertype : null;
         return(
             <>
               <div className="header">
@@ -28,16 +37,22 @@ class Homepage extends Component{
                       <div className="logo">
                           <img src="/image/heart.svg" />
                       </div>
-                      <div className="menu">
-                          <a href="/login"><h3>ログイン</h3></a>
-                          <a href="/registration"><h3>会員登録</h3></a>
-                      </div>
+                      {userData ?
+                        <div className="menu">
+                            <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p> 
+                        </div>
+                        :
+                        <div className="menu">
+                            <a href="/login"><h3>ログイン</h3></a>
+                            <a href="/registration"><h3>会員登録</h3></a>
+                        </div>
+                      }
                   </div>
                   <img src="/image/01.jpg" alt="video_sharing" />
-                  <img className="share_button sp" onClick={{}} src="/image/button.svg" />
+                  {userData&&<img className="share_button sp" onClick={this.handleUpload}  src="/image/button.svg" />}
               </div>
               <div className="banner">
-                <img className="share_button pc" onClick={{}} src="/image/button.svg" />
+              {userData&&<img className="share_button pc" onClick={this.handleUpload} src="/image/button.svg" />}
                 <div className="select_group">
                     <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                         <div className='search'>

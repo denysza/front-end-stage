@@ -50,7 +50,7 @@ class Login extends Component{
             axios(config)
             .then((response)=>{
                 localStorage.setItem("userData", JSON.stringify(response.data))
-                window.location.assign('/mypage');
+                window.location.assign('/');
             })
             .catch((error)=>{
               this.setState({

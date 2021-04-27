@@ -4,15 +4,317 @@ import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 import { NavLink as RouterLink } from 'react-router-dom';
 import './../../asset/manage.css';
+import { getDisplayDate } from '@material-ui/pickers/_helpers/text-field-helper';
+import axios from 'axios';
+import {
+    Box,
+    Button,
+    Container,
+    Typography,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    Slide,
+} from '@material-ui/core';
+const baseurl = process.env.REACT_APP_BASE_URL;
 
 class Dashboard extends Component{
-    
-   handleLogout = (event)=>{
-    localStorage.removeItem("userData");
-    window.location.assign('/');
-   }
+   
+    constructor(props) {
+        super(props);
+        this.state={
+            Alertmodal:false,
+            alertTitle:"",
+            alertContent:"",
+            CategoryId:"",
+            categoryList:[],   
+            pageCount:0,
+            totalRecords:0,
+            sortPlaynum:0,
+            sortFavNum:0,
+            sortRegdate:0,
+            filter: {
+                Keywords: "",
+                PageSize: 10,
+                PageNumber: 1,
+                sortKey:"",
+                sortType:"",
+                selectedCategory:"",
+            },
+            videos:[],
+        }
+    }
 
-    render(){
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
+    }
+
+    handleCategoryId = (event)=>{
+        const{filter} = this.state;
+        filter.selectedCategory = event.target.value;
+        this.setState({filter:filter});
+        this.getdata(filter);
+        
+    }
+
+    componentDidMount(){
+        this.getCategory();
+        const {filter} = this.state; 
+        this.getdata(filter);
+    }
+
+    getdata(filter){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var data = new Array();
+        var config = {
+          method: 'post',
+          url: `${baseurl}/api/getVideoListAll/`,         
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : filter
+        };
+        
+        axios(config)
+        .then((response) => {
+     
+            var videos = response.data.videos;
+            var pageCount = response.data.pageCount;
+            var totalRecords = response.data.totalRecord;
+            var {categoryList}=this.state;
+            console.log(categoryList)
+            videos.forEach(item=>{
+                var temp={};
+                temp.id = item.id;
+                temp.title = item.title.length>10?item.title.substr(0,10)+"...":item.title;
+                temp.url = item.url;
+                temp.username = item.username;
+                temp.playnum = item.playnum;
+                temp.favoritenum = item.favoritenum
+                temp.created_at = item.created_at.substr(0, 10);
+                temp.preveimage = item.preveimage;
+                temp.is_active = item.is_active;
+                var categoryids = item.categorys;
+                var categoryidarrays = categoryids.split(',');
+                var categorystrings = "";
+                categoryidarrays.forEach(id=>{
+                    categoryList.forEach(categoryitem=>{
+                        if(parseInt(id)===categoryitem.value){
+                            categorystrings+=categoryitem.label + "  ";
+                        }
+                    })
+                });
+            
+                temp.category = categorystrings;
+                data.push(temp);    
+            })
+
+            this.setState({
+                 pageCount: pageCount,
+                 totalRecords:totalRecords,
+                 videos:data
+            });           
+        })
+        .catch((error)=> {
+            filter.PageNumber=1;
+            this.setState({
+                pageCount: 0,
+                totalRecords:0,
+                users:[],
+                filter:filter
+            });
+        });
+    }
+
+    getCategory(){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'get',
+          url: `${baseurl}/api/getVideoCategory`,
+          headers: { 
+          'Authorization': 'Bearer ' + token,
+          },
+              data : {},
+          };  
+        axios(config)
+        .then((response) => {
+            var responsedata = response.data.categoryies;
+            var data =new Array();
+            responsedata.forEach(item => {
+                var temp={};
+                temp.value = item.id;
+                temp.label = item.title;
+                data.push(temp);
+            });
+            this.setState({categoryList:data});
+        })
+        .catch((error)=> {          
+            this.setState({categoryList:[]});        
+        });
+    }
+
+    handleSortPlayNum = (event) => {
+        let sortNumbers=this.state.sortPlaynum;
+        const{filter} = this.state
+        sortNumbers = Math.abs(sortNumbers - 1);
+        filter.sortKey = "playnum";
+        filter.sortType = sortNumbers;
+        this.setState({
+            filter:filter,
+            sortNumbers:sortNumbers
+        });
+        this.getdata(filter);        
+    }
+
+    handleSortFavNum = (event) => {
+        let sortNumbers=this.state.sortFavNum;
+        const{filter} = this.state
+        sortNumbers = Math.abs(sortNumbers - 1);
+        filter.sortKey = "popular";
+        filter.sortType = sortNumbers;
+        this.setState({
+            filter:filter,
+            sortNumbers:sortNumbers
+        });
+        this.getdata(filter);        
+    }
+
+    handleSortRegdate = (event) => {
+        let sortNumbers=this.state.sortRegdate;
+        const{filter} = this.state
+        sortNumbers = Math.abs(sortNumbers - 1);
+        filter.sortKey = "regDate";
+        filter.sortType = sortNumbers;
+        this.setState({
+            filter:filter,
+            sortNumbers:sortNumbers
+        });
+        this.getdata(filter);        
+    }
+
+    handlePagenation = (events,PageNumber)=>{
+        const {filter} = this.state;
+        filter.PageNumber = PageNumber;
+        this.setState({
+            filter:filter
+        });
+        this.getdata(filter);
+    }
+
+    searchbyKeywords = (e) =>{
+        e.preventDefault();
+        const{filter}=this.state;
+        this.setState({
+            filter:filter
+        })
+        this.getdata(filter);
+    }
+
+    handleSearchKeyword = (event)=>
+    {
+        const{filter}=this.state;
+        filter.Keywords = event.target.value;
+        this.setState({
+            filter:filter
+        })
+    }
+
+    handleSerach = (event)=>{
+        const{filter}=this.state;
+        this.setState({
+            filter:filter
+        })
+        this.getdata(filter);
+    }
+
+
+    handlePermit(videoid)
+    {
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'get',
+          url: `${baseurl}/api/videopermit/${videoid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+
+    handleFreezing(videoid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'get',
+          url: `${baseurl}/api/videofreezing/${videoid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+
+    handleDeleteVideo(videoid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'delete',
+          url: `${baseurl}/api/video/${videoid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status==401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+  
+
+    render(){      
+        const {videos, pageCount, totalRecords,filter,categoryList,CategoryId}=this.state
+        const {PageNumber,PageSize}=filter;
         return(
             <>
                 <header>
@@ -44,30 +346,29 @@ class Dashboard extends Component{
                                 <div className='search_m'>
                                     <div className='search_box_m'>
                                         <img src="/image/search.svg" className="searchImage_m" />
-                                        <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
+                                        <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text_m" name="search_keyword" />
                                     </div>
-                                    <div className='button_outline_m' >
+                                    <div className='button_outline_m' onClick={this.handleSerach}>
                                         <div>検索</div>
                                     </div>
                                 </div>
                             </form> 
                             <div className="arrange_group_m">
-                                <select className="select_category_m">
+                                <select className="select_category_m" value={this.state.filter.selectedCategory} onChange={this.handleCategoryId}>
                                     <option value="">カテゴリー</option>
-                                    <option value="Category1">カテゴリー1</option>
-                                    <option value="Category2">カテゴリー2</option>
-                                    <option value="Category3">カテゴリー3</option>
-                                    <option value="Category4">カテゴリー4</option>
+                                    {categoryList.map((category) => (
+                                        <option key={category.value} value={category.value}>{category.label}</option> 
+                                    ))}
                                 </select>
-                                <div className="arrange_box_m">
-                                    <div>評価</div>
+                                <div className="arrange_box_m"  onClick={this.handleSortPlayNum}>
+                                    <div>再生</div>
                                     <img src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
-                                <div className="arrange_box_m">
+                                <div className="arrange_box_m"  onClick={this.handleSortFavNum}>
                                     <div>人気</div>
                                     <img src="/image/arrange.svg" className="arrangeImage_m"  />
                                 </div>
-                                <div className="arrange_box_m">
+                                <div className="arrange_box_m"  onClick={this.handleSortRegdate}>
                                     <div>新着</div>
                                     <img src="/image/arrange.svg" className="arrangeImage_m" />
                                 </div>
@@ -79,33 +380,35 @@ class Dashboard extends Component{
                                 <th>カテゴリー</th>
                                 <th>共有日付</th>
                                 <th>再生回数</th>
-                                <th>評価回数</th>
+                                <th>人気数</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <img src="/image/business.png" alt="" />
+                            {videos.map((video) => (
+                                <tr>
+                                    <td>
                                         <div>
-                                            <p>動画タイトル</p>
-                                            <p>山田太郎</p>
+                                            <img src={video.preveimage} alt="" />
+                                            <div>
+                                                <p>{video.title}</p>
+                                                <p>{video.username}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td><p>アクションビデオ</p></td>
-                                <td><p>2021年4月10日</p></td>
-                                <td><p>25回</p></td>
-                                <td><p>25回</p></td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="green">詳細</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td><p>{video.category}</p></td>
+                                    <td><p>{video.created_at}</p></td>
+                                    <td><p>{video.playnum}回</p></td>
+                                    <td><p>{video.favoritenum}回</p></td>
+                                    <td>
+                                        <button onClick={()=>{video.is_active?this.handleFreezing(video.id):this.handlePermit(video.id)}}  className="grey">{video.is_active?"凍結":"許可"}</button>
+                                        <button className="green">詳細</button>
+                                        <button className="red" onClick={()=>{this.handleDeleteVideo(video.id)}}>削除</button>
+                                    </td>
+                                </tr>
+                            ))}
                         </table>
                         <div className="pagination">
-                            <div>600 件中 1 から 15 まで表示</div>
-                            <Pagination count={150} variant="outlined" shape="rounded"color="primary" />
+                        <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber==pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
+                            <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
                         </div>
                     </div>
                 </div>
