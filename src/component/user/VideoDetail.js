@@ -23,12 +23,9 @@ class VideoDetail extends Component{
     componentDidMount(){
         const {id} = this.props.match.params;
         this.getdata(id)
-        console.log(id)
     }
 
-    getdata(id){
-    
-        var data = new Array();
+    getdata(id){  
         var config = {
             method: 'get',
             url: `${baseurl}/api/getVideoDetail/${id}`,
@@ -42,17 +39,64 @@ class VideoDetail extends Component{
             })
         })            
         .catch((error)=> {
-
+            console.log(error)
         })
     }
 
     handlePlay=(event)=>{
-        this.setState({
-            videoPlayed:true
+        var {id} = this.props.match.params;
+        
+        var config = {
+            method: 'get',
+            url: `${baseurl}/api/playVideo/${id}`,
+            data : {},
+        };
+        axios(config)
+        .then((response) => {
+            this.getdata(id);
+            this.setState({
+                videoPlayed:true
+            })
+        })            
+        .catch((error)=> {
+            console.log(error)
         })
+       
     }
 
+    handleAddFavo=(event)=>{
+        var {id} = this.props.match.params;
+        var config = {
+            method: 'get',
+            url: `${baseurl}/api/favoVideo/${id}`,
+            data : {},
+        };
+        axios(config)
+        .then((response) => {
+            this.getdata(id)
+        })            
+        .catch((error)=> {
+            console.log(error)
+        })  
+    }
+
+    // handleSendComment = (event) =>{
+    //     var {id} = this.props.match.params;
+    //     var filter = {
+    //         videoid:id,
+    //         title:""
+    //     }
+    //     var config = {
+    //       method: 'post',
+    //       url: `${baseurl}/api/getVideoList/`,
+    //       data : filter
+    //     };
+    // }
+
+    
+
     render(){
+        let userData =  JSON.parse(localStorage.getItem("userData")) || null;
         const {videoDetaildata,videoPlayed}= this.state
         return(
             <>
@@ -61,10 +105,16 @@ class VideoDetail extends Component{
                       <div className="logo">
                           <img alt="" src="/image/heart.svg" />
                       </div>
-                      <div className="menu">
-                          <a href=""><h3>ログイン</h3></a>
-                          <a href=""><h3>会員登録</h3></a>
-                      </div>
+                      {userData ?
+                        <div className="menu">
+                            <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p> 
+                        </div>
+                        :
+                        <div className="menu">
+                            <a href="/login"><h3>ログイン</h3></a>
+                            <a href="/registration"><h3>会員登録</h3></a>
+                        </div>
+                      }
                   </div>
                 </div>
                 {videoPlayed?
@@ -85,12 +135,15 @@ class VideoDetail extends Component{
                 <div className="detail_banner">
                     <div className="mark">
                         <div>
-                            <div className='button_outline'>
+                            <div className='button_outline' onClick={this.handleAddFavo}>
                                 <div>おすすめ</div>
                             </div>
-                            <div className='button_outline'>
-                                <div>コメント追加</div>
-                            </div>
+                            {userData ?
+                                <div className='button_outline' onClick={this.handleComment}>
+                                    <div>コメント追加</div>
+                                </div>
+                            :""
+                            }
                         </div>
                     </div>
                     <div className="video_info">
@@ -115,16 +168,20 @@ class VideoDetail extends Component{
                     </div>
                 </div>
                 <div className="container">
+                 
                     <div className="comment_box">
-                        <div className="comment_inner">
-                            <h4>ユーザー名<span>2021年4月10日</span></h4>
-                            <hr />
-                            <div className="comment_text">
-                                <p>
-                                素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </p>
+                        {videoDetaildata.comment?videoDetaildata.comment.map((com) => (
+                            <div className="comment_inner">
+                                <h4>ユーザー名<span>2021年4月10日</span></h4>
+                                <hr />
+                                <div className="comment_text">
+                                    <p>
+                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        )):""
+                    }
                     </div>
                 </div>
                 <Footer />
