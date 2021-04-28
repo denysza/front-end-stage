@@ -1,0 +1,8 @@
+@media (max-width: 769px) {
+    .box_card.registration {
+        top: 35%;
+    }
+    .box_card.registration .card_inner {
+        padding: 25px 10px;
+    }
+}

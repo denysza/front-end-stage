@@ -51,7 +51,7 @@ class AdminLogin extends Component{
             })
             .catch((error)=>{
               this.setState({
-                alertTitle:"失敗",
+                alertTitle:"通    知",
                 alertContent:"ログインに失敗しました。",
                 Alertmodal:true,
               }); 
@@ -83,7 +83,7 @@ class AdminLogin extends Component{
                             </div>
                             <div className="input_element">
                                 <label htmlFor="password">パスワード</label>
-                                <input id="password" name="password"/>
+                                <input id="password" type="password" name="password"/>
                             </div>
                             <div className='button_outline general_button_outline' onClick={this.handleLogin}>
                             <div>ログイン</div>

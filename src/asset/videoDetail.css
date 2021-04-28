@@ -10,7 +10,7 @@
     left: 50%;
     bottom: 50%;
     transform: translate(-50%, 50%);
-    width: 100px;
+    width: 5vw;
     cursor: pointer;
 }
 .evaluation img {
@@ -119,4 +119,88 @@
 
 .video-play-area div{
     margin:auto
+}
+.comment_input textarea {
+    width: 100%;
+    border: 1px solid #0A55AE;
+    border-radius: 5px;
+}
+@media (max-width: 1200px) {
+    .vid_screen {
+        width: 60%;
+    }
+    .input_element input {
+        padding: 10px;
+        width: calc(100% - 22px);
+    }
+}
+@media (max-width: 993px) {
+    .mark .button_outline {
+        width: 150px;
+    }
+    .mark > div {
+        width: fit-content;
+    }
+    .video_info {
+        width: 65%;
+    }
+}
+@media (max-width: 769px) {
+    .mark {
+        background-color: rgba(0,0,0,0.5);
+        width: 30%;
+    }
+    .video_info {
+        width: 70%;
+    }
+    .mark .button_outline {
+        width: 120px;
+    }
+    .video_info_box {
+        outline-offset: 2px;
+        padding: 10px;
+    }
+    .video-prev-area {
+        width: 100%;
+    }
+    .box_card.upload {
+        top: 20%;
+    }
+    .box_card.upload .button_outline {
+        height: 28px;
+        line-height: 28px;
+    }
+    .box_card.upload .general_button_outline {
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    .css-tlfecz-indicatorContainer {
+        padding: 5px!important;
+    }
+}
+@media (max-width: 500px) {
+    .mark .button_outline {
+        width: 75px;
+        font-size: 10px;
+    }
+    .video_info_box {
+        width: 85%;
+        margin-left: 0;
+    }
+    .css-tlfecz-indicatorContainer {
+        padding: 3px!important;
+    }
+    .input_element input {
+        padding: 7px;
+        width: calc(100% - 16px);
+    }
+    .css-yk16xz-control {
+        min-height: 25px!important;
+    }
+    .css-g1d714-ValueContainer {
+        min-height: 25px!important;
+    }
+    .css-1hb7zxy-IndicatorsContainer {
+        min-height: 25px!important;
+    }
 }

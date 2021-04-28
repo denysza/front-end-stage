@@ -45,11 +45,11 @@ class ManagePassword extends Component{
                             </div>
                             <div className="input_element">
                                 <label htmlFor="password">新しいパスワード</label>
-                                <input id="password" name="password" value="" />
+                                <input id="password" type="password" name="password" value="" />
                             </div>
                             <div className="input_element">
                                 <label htmlFor="password">新しいパスワード(再入力)</label>
-                                <input id="password" name="password" value="" />
+                                <input id="password" type="password" name="password" value="" />
                             </div>
                             <div className='button_outline general_button_outline'>
                                 <div>変&nbsp;&nbsp;&nbsp;&nbsp;更</div>

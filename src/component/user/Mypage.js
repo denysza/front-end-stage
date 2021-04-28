@@ -19,14 +19,15 @@ class Registration extends Component{
                 <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img alt="" src="image/heart.svg" />
+                        <a href="/"><img alt="" src="/image/heart.svg" /></a>
                       </div>
                       <div className="menu">
+                        <a href="/mypage" className="mypagebtn"><p>マイページ</p></a>
                         <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
-                  <div className="box_card">
+                  <div className="box_card mypage">
                       <div className="card_inner">
                           <h1>アカウント情報</h1>
                           <img src="image/account.png" alt="Video" className="account_image" />
@@ -47,6 +48,12 @@ class Registration extends Component{
                           </div>
                       </div>
                   </div>
+                </div>
+                <div className="banner_account1">
+                    <img src="image/banner.png"/>
+                </div>
+                <div className="banner_account2">
+                    <img src="image/banner_sp.png"/>
                 </div>
                 <div className="container">
                   <div className="video_list">
