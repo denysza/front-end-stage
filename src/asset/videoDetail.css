@@ -11,6 +11,7 @@
     bottom: 50%;
     transform: translate(-50%, 50%);
     width: 100px;
+    cursor: pointer;
 }
 .evaluation img {
     width: 40px;
@@ -102,4 +103,16 @@
     margin: auto;
     outline: 1.5px white solid;
     outline-offset: -5px;
+}
+
+.video-prev-area{
+    width: 50%;
+    position: relative;
+    margin: auto;
+   
+}
+
+.video-play-area{
+    width: 50%;
+    margin:auto
 }

@@ -153,7 +153,7 @@ class Dashboard extends Component{
         filter.sortType = sortNumbers;
         this.setState({
             filter:filter,
-            sortNumbers:sortNumbers
+            sortPlaynum:sortNumbers
         });
         this.getdata(filter);        
     }
@@ -161,12 +161,14 @@ class Dashboard extends Component{
     handleSortFavNum = (event) => {
         let sortNumbers=this.state.sortFavNum;
         const{filter} = this.state
+
         sortNumbers = Math.abs(sortNumbers - 1);
         filter.sortKey = "popular";
         filter.sortType = sortNumbers;
+        console.log(sortNumbers)
         this.setState({
             filter:filter,
-            sortNumbers:sortNumbers
+            sortFavNum:sortNumbers
         });
         this.getdata(filter);        
     }
@@ -179,7 +181,7 @@ class Dashboard extends Component{
         filter.sortType = sortNumbers;
         this.setState({
             filter:filter,
-            sortNumbers:sortNumbers
+            sortRegdate:sortNumbers
         });
         this.getdata(filter);        
     }
@@ -395,7 +397,7 @@ class Dashboard extends Component{
                             ))}
                         </table>
                         <div className="pagination">
-                        <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
+                            <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
                             <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
                         </div>
                     </div>

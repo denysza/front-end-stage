@@ -28,6 +28,7 @@ class VideoDetail extends Component{
             videoTitle:"",
             categoryList:[],
             selectedOption:"",
+            selected:[],
         }
     }
 
@@ -90,6 +91,7 @@ class VideoDetail extends Component{
 
     handleChangeCategory = (selected) => {
         let selectedOption=""
+        
         if(selected.length>0){
             selected.forEach(category=>{
                 selectedOption+=category.value+","
@@ -98,7 +100,10 @@ class VideoDetail extends Component{
         else{
             selectedOption="";
         }
-        this.setState({selectedOption:selectedOption});
+        this.setState({
+            selectedOption:selectedOption,
+            selected:selected
+        });
     }
 
     componentDidMount(){
@@ -164,8 +169,8 @@ class VideoDetail extends Component{
                 videoData:null,
                 videoSize:"",
                 videoTitle:"",
-                categoryList:[],
                 selectedOption:"",
+                selected:[],
             })
           }).catch((error)=> {
             if (error.response) {
@@ -177,8 +182,7 @@ class VideoDetail extends Component{
           })       
     }
 
-    render(){
-       
+    render(){       
         return(
             <>
                 <div className="header">
@@ -209,6 +213,7 @@ class VideoDetail extends Component{
                                     closeMenuOnSelect={false}
                                     components={animatedComponents}
                                     isMulti
+                                    value={this.state.selected}
                                     options = {this.state.categoryList}
                                     onChange={this.handleChangeCategory}
                                 />
