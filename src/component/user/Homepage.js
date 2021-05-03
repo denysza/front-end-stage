@@ -228,10 +228,11 @@ class Homepage extends Component{
               <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img alt="" src="/image/heart.svg" />
+                        <a href="/"><img alt="" src="/image/heart.svg" /></a>
                       </div>
                       {userData ?
                         <div className="menu">
+                            <a href="/mypage" className="mypagebtn"><p>マイページ</p></a>
                             <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p> 
                         </div>
                         :
@@ -248,34 +249,34 @@ class Homepage extends Component{
               {userData&&<img alt="" className="share_button pc" onClick={this.handleUpload} src="/image/button.svg" />}
                 <div className="select_group">
                 <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
-                    <div className='search_m'>
-                        <div className='search_box_m'>
-                            <img alt="" src="/image/search.svg" className="searchImage_m" />
-                            <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text_m" name="search_keyword" />
+                    <div className='search'>
+                        <div className='search_box'>
+                            <img alt="" src="/image/search.svg" className="searchImage" />
+                            <input id="search_input" value={this.state.filter.Keywords} onChange={this.handleSearchKeyword} className="search_text" name="search_keyword" />
                         </div>
-                        <div className='button_outline_m' onClick={this.handleSerach}>
+                        <div className='button_outline home' onClick={this.handleSerach}>
                             <div>検索</div>
                         </div>
                     </div>
                 </form>  
                     <div className="arrange_group">
-                        <select className="select_category_m" value={this.state.filter.selectedCategory} onChange={this.handleCategoryId}>
+                        <select className="select_category" value={this.state.filter.selectedCategory} onChange={this.handleCategoryId}>
                            <option value="">カテゴリー</option>
                                     {categoryList.map((category) => (
                                         <option key={category.value} value={category.value}>{category.label}</option> 
                                     ))}
                         </select>
-                        <div className="arrange_box_m"  onClick={this.handleSortPlayNum}>
+                        <div className="arrange_box"  onClick={this.handleSortPlayNum}>
                             <div>再生</div>
-                            <img alt="" src="/image/arrange.svg" className="arrangeImage_m"  />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage"  />
                         </div>
-                        <div className="arrange_box_m"  onClick={this.handleSortFavNum}>
+                        <div className="arrange_box"  onClick={this.handleSortFavNum}>
                             <div>人気</div>
-                            <img alt="" src="/image/arrange.svg" className="arrangeImage_m"  />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage"  />
                         </div>
-                        <div className="arrange_box_m"  onClick={this.handleSortRegdate}>
+                        <div className="arrange_box"  onClick={this.handleSortRegdate}>
                             <div>新着</div>
-                            <img alt="" src="/image/arrange.svg" className="arrangeImage_m" />
+                            <img alt="" src="/image/arrange.svg" className="arrangeImage" />
                         </div>
                     </div>
                 </div>
@@ -309,7 +310,7 @@ class Homepage extends Component{
                   <div className="pagination">
                     <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
                     <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
-                </div>
+                 </div>
               </div>
               <Footer />
             </>

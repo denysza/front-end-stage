@@ -10,10 +10,14 @@ h1 {
 }
 a {
     text-decoration: none;
+    outline: none;
 }
 p {
     margin-top: 1vw;
     margin-bottom: 0.8vw;
+}
+.banner_sp {
+    display: none;
 }
 label {
     display: block;
@@ -37,7 +41,7 @@ label {
   font-size: 16px;
 }
 .box_card {
-    top: 35%;
+    top: 20%;
     position: absolute;
     width: 700px;
     background: rgba(255, 255, 255, 0.4);
@@ -159,7 +163,39 @@ input, select {
 .sp {
     display: none!important;
 }
+.alert-modal .MuiDialog-paper{
+    width: 400px !important;
+}
+.comment_modal .MuiDialog-paper{
+    margin: 20px !important;
+}
 
+.btn-search{
+    background-color: #0A55AE!important;
+    color: white !important;
+    margin: 10px !important;
+    width: 120px !important;
+}
+
+.search-btn{
+    display: flex;
+    justify-content: center;
+}
+
+.logoutbtn, .mypagebtn{
+    cursor: pointer;
+}
+.MuiDialogTitle-root {
+    padding: 5px 24px!important;
+    background-color: #0A55AE;
+    color: white;
+}
+.MuiDialogContentText-root {
+    margin-bottom: 5px!important;
+    margin-top: 15px!important;
+    padding-bottom: 15px!important;
+    border-bottom: 1px solid #0A55AE;
+}
 @media (max-width: 1600px) {
     .container {
     max-width: 80%;
@@ -175,12 +211,18 @@ input, select {
         width: 45%;
         margin: 2%;
     }
+    .input_element input {
+        padding: 13px;
+    }
 }
 @media (max-width: 993px) {
     .container {
         max-width: 95%;
         margin-top: 70px;
         margin-bottom: 90px;
+    }
+    .card_inner h1 {
+        font-size: 30px;
     }
     .header_bar {
         height: 50px;
@@ -201,8 +243,20 @@ input, select {
     .footer_bar {
         min-height: 240px;
     }
+    .box_card {
+        width: 75%;
+    }
+    .notfound .general_button_outline {
+        margin-top: 50px;
+    }
 }
 @media (max-width: 769px) {
+    .card_inner h1 {
+        font-size: 28px;
+    }
+    .banner_sp {
+        display: block;
+    }
     h2, h3 {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -221,6 +275,19 @@ input, select {
         margin-bottom: 30px;
         font-size: 11px;
     }
+    .input_element {
+        width: 80%;
+        margin-bottom: 5px;
+    }
+    .box_card {
+        top: 40%;
+    }
+    .card_inner {
+        padding: 20px 15px;
+    }
+    .notfound .general_button_outline {
+        margin-top: 40px;
+    }
 }
 @media (max-width: 670px) {
     .footer_nav {
@@ -230,36 +297,29 @@ input, select {
     .footer_bar {
         min-height: 200px;
     }
-}
-
-.alert-modal .MuiDialog-paper{
-    width: 700px !important;
-    max-width: 695px !important;
-}
-
-.btn-search{
-    background-color:rgb(234, 85, 20) !important;
-    color: white !important;
-    margin: 10px !important;
-    margin-right: 0px !important; 
-    width: 120px !important;
-}
-
-.search-btn{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.logoutbtn{
-    cursor: pointer;
+    .menu {
+        width: 180px;
+        margin-right: 0px;
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 500px) {
+    body {
+        font-size: 12px;
+    }
+    label {
+        font-size: 14px;
+    }
     .pc {
-        display: none;
+        display: none!important;
     }
     .sp {
         display: block!important;
+    }
+    .card_inner h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
     }
     h2 , h3 {
         margin-top: 15px;
@@ -276,4 +336,44 @@ input, select {
         margin-top: 50px;
         margin-bottom: 90px;
     }
+    .menu {
+        width: 150px;
+        margin-right: 0px;
+        font-size: 12px;
+    }
+    .box_card {
+        width: 85%;
+        border-radius: 5px;
+    }
+    .card_inner {
+        padding: 15px 10px;
+    }
+    .input_element {
+        width: 85%;
+        margin-bottom: 5px;
+    }
+    .input_element input {
+        padding: 10px;
+        border-radius: 5px;
+    }
+    .social_link {
+        width: 180px;
+    }
+    .social_link img {
+        width: 25px;
+        margin: 0 2px;
+    }
+    .full_height {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+    .notfound .general_button_outline {
+        margin-top: 30px;
+    }
 }
+
+.spin-modal .MuiDialog-paper{
+    background-color: transparent !important;
+    padding: 10px !important;
+    box-shadow: none !important;
+  }

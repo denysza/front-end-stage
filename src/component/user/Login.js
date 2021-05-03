@@ -51,7 +51,7 @@ class Login extends Component{
             })
             .catch((error)=>{
               this.setState({
-                alertTitle:"失敗",
+                alertTitle:"通    知",
                 alertContent:"ログインに失敗しました。",
                 Alertmodal:true,
               }); 
@@ -69,35 +69,39 @@ class Login extends Component{
         const{alertTitle,alertContent,Alertmodal}=this.state
         return(
             <>
+            <div className="full_height">
                 <div className="header">
-                  <div className="header_bar">
-                      <div className="logo">
-                          <img alt="" src="image/heart.svg" />
-                      </div>
-                      <div className="menu">
-                          <a href="/login"><h3>ログイン</h3></a>
-                          <a href="/registration"><h3>会員登録</h3></a>
-                      </div>
-                  </div>
-                  <img src="image/01.jpg" alt="video_sharing" />
-                  <div className="box_card">
-                      <div className="card_inner">
-                          <h1>ログイン</h1>
-                          <form>
-                              <div className="input_element">
-                                  <label htmlFor="mailAddress">メールアドレス</label>
-                                  <input id="email" name="mailAddress" placeholder="例：example@email.com" />
-                              </div>
-                              <div className="input_element">
-                                  <label htmlFor="password">パスワード</label>
-                                  <input id="password" name="password"/>
-                              </div>
-                              <div className='button_outline general_button_outline' onClick={this.handleLogin}>
-                                <div>ログイン</div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
+                    <div className="header_bar">
+                        <div className="logo">
+                            <a href="/"><img alt="" src="/image/heart.svg" /></a>
+                        </div>
+                        <div className="menu">
+                            <a href="/login"><h3>ログイン</h3></a>
+                            <a href="/registration"><h3>会員登録</h3></a>
+                        </div>
+                    </div>
+                    <img src="image/01.jpg" alt="video_sharing" />
+                    <div className="box_card">
+                        <div className="card_inner">
+                            <h1>ログイン</h1>
+                            <form>
+                                <div className="input_element">
+                                    <label htmlFor="mailAddress">メールアドレス</label>
+                                    <input id="email" name="mailAddress" placeholder="例：example@email.com" />
+                                </div>
+                                <div className="input_element">
+                                    <label htmlFor="password">パスワード</label>
+                                    <input id="password" type="password" name="password"/>
+                                </div>
+                                <div className='button_outline general_button_outline' onClick={this.handleLogin}>
+                                    <div>ログイン</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div className="banner_sp">
+                    <img src="image/banner_sp.png"/>
                 </div>
                 <Footer />
                 <Dialog
@@ -121,6 +125,7 @@ class Login extends Component{
                     </div>
                     </DialogContent>
                 </Dialog>
+            </div>
             </>
         )
     }

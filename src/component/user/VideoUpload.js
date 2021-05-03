@@ -5,7 +5,10 @@ import makeAnimated from 'react-select/animated';
 import Footer from '../../layout/Footer.js';
 import './../../asset/main.css';
 import './../../asset/videoDetail.css';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+    Dialog
+} from '@material-ui/core';
 import axios from 'axios';
 
 const baseurl = process.env.REACT_APP_BASE_URL;
@@ -29,6 +32,7 @@ class VideoDetail extends Component{
             categoryList:[],
             selectedOption:"",
             selected:[],
+            spin:false,
         }
     }
 
@@ -107,19 +111,15 @@ class VideoDetail extends Component{
     }
 
     componentDidMount(){
-        this.getCategory();
+         this.getCategory();
     }
 
 
     getCategory(){
-        var userData = JSON.parse(localStorage.userData);
-        var token = userData.token;
+    
         var config = {
           method: 'get',
           url: `${baseurl}/api/getVideoCategory`,
-          headers: { 
-          'Authorization': 'Bearer ' + token,
-          },
               data : {},
           };  
         axios(config)
@@ -157,6 +157,9 @@ class VideoDetail extends Component{
         fd.append('videoType', videoType);
         fd.append('vidoePrevimg', videoPrevimg);
         fd.append('categories', selectedOption);
+        this.setState({
+            spin:true
+          });
         axios.post(`${baseurl}/api/upload/`, fd, {
             headers: {
               'Authorization': 'Bearer ' + token,
@@ -171,6 +174,7 @@ class VideoDetail extends Component{
                 videoTitle:"",
                 selectedOption:"",
                 selected:[],
+                spin:false
             })
           }).catch((error)=> {
             if (error.response) {
@@ -179,6 +183,9 @@ class VideoDetail extends Component{
                     window.location.assign('/');
                 }
             }
+            this.setState({
+                spin:false
+            });
           })       
     }
 
@@ -188,14 +195,15 @@ class VideoDetail extends Component{
                 <div className="header">
                   <div className="header_bar">
                       <div className="logo">
-                          <img alt="" src="/image/heart.svg" />
+                        <a href="/"><img alt="" src="/image/heart.svg" /></a>
                       </div>
                       <div className="menu">
+                        <a href="/mypage" className="mypagebtn"><p>マイページ</p></a>
                         <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
                       </div>
                   </div>
                   <img src="image/01.jpg" alt="video_sharing" />
-                  <div className="box_card">
+                  <div className="box_card upload">
                       <div className="card_inner">
                           <h1>動画登録</h1>
                           <form action="" method="post" enctype="form-data/multipart">
@@ -225,7 +233,20 @@ class VideoDetail extends Component{
                       </div>
                   </div>
                 </div>
+                <div className="banner_account1">
+                    <img src="image/banner.png"/>
+                </div>
+                <div className="banner_account2">
+                    <img src="image/banner_sp.png"/>
+                </div>
                 <Footer />
+                <Dialog
+                    className="spin-modal"
+                    open={this.state.spin}      
+                    disableBackdropClick
+                >
+                    <CircularProgress />
+                </Dialog>  
             </>
         )
     }

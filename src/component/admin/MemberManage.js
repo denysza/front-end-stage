@@ -267,7 +267,6 @@ class MemberManage extends Component{
                                 <th>メールアドレス</th>
                                 <th>登録日付</th>
                                 <th>共有件数</th>
-                                <th>備考</th>
                                 <th></th>
                             </tr>
                             {users.map((user) => (
@@ -278,10 +277,9 @@ class MemberManage extends Component{
                                     <td><p>{user.email}</p></td>
                                     <td><p>{user.regDate.substr(0, 10)}</p></td>
                                     <td><p>{user.uploadnumber}件</p></td>
-                                    <td><p></p></td>
                                     <td>
                                         <button className="grey" onClick={()=>{user.is_active?this.handleFreezing(user.id):this.handlePermit(user.id)}} >{user.is_active?"凍結":"許可"}</button>
-                                        <button className="green">詳細</button>
+                                        <button className="green" onClick={()=>window.location.assign(`/admin/member_detail/${user.id}`)}>詳細</button>
                                         <button className="red" onClick={()=>{this.handleDeleteuser(user.id)}}>削除</button>
                                     </td>
                                 </tr>

@@ -390,7 +390,7 @@ class Dashboard extends Component{
                                     <td><p>{video.favoritenum}回</p></td>
                                     <td>
                                         <button onClick={()=>{video.is_active?this.handleFreezing(video.id):this.handlePermit(video.id)}}  className="grey">{video.is_active?"凍結":"許可"}</button>
-                                        <button className="green">詳細</button>
+                                        <button onClick={()=>window.location.assign(`/admin/admin_video_detail/${video.id}`)} className="green">詳細</button>
                                         <button className="red" onClick={()=>{this.handleDeleteVideo(video.id)}}>削除</button>
                                     </td>
                                 </tr>

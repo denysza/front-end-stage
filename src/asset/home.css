@@ -190,6 +190,9 @@
         padding-top: 70px;
         padding-bottom: 30px;
     }
+    .general_button_outline {
+        margin-bottom: 15px;
+    }
 }
 @media (max-width: 993px) {
     .select_group {
@@ -207,7 +210,7 @@
     .searchImage {
         width: 30px
     }
-    .button_outline {
+    .button_outline.home {
         width: 50px;
         height: 25px;
         line-height: 23px;
@@ -224,6 +227,7 @@
     }
     .arrange_box {
         width: 80px;
+        font-size: 12px;
     }
     .arrange_box > div {
         margin-left: 10px;
@@ -246,6 +250,9 @@
     }
     .pagination {
         flex-direction: column;
+    }
+    .general_button_outline {
+        margin-top: 15px;
     }
 }
 @media (max-width: 500px) {
@@ -272,5 +279,31 @@
     }
     .evaluation {
         font-size: 20px;
+    }
+    .arrange_box > div {
+        margin-left: 5px;
+    }
+    .arrangeImage {
+        right: 5px;
+        width: 10px;
+    }
+    .select_category {
+        width: 110px;
+    }
+    .footer_nav {
+        width: 90%;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+    .footer_bar {
+        min-height: 150px;
+    }
+    .button_outline {
+        height: 28px;
+        line-height: 28px;
+    }
+    .general_button_outline {
+        margin-top: 20px;
+        margin-bottom: 15px;
     }
 }
