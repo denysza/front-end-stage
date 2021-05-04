@@ -313,3 +313,32 @@ td .red {
 .login_inner .input_element input {
     background: rgba(0, 0, 0, 0.6);
 }
+.category_edit {
+    width: 50%;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+.category_edit .green {
+    border: 1px black solid;
+    border-radius: 3px;
+    width: 60px;
+    margin: 5px;
+    color: white;
+    padding: 5px 0;
+    cursor: pointer;
+    background-color: #1CCF76;
+}
+.category_table {
+    margin-left: 0;
+    width: 100%;
+}
+.category_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.category_title input {
+    padding: 5px;
+    border-radius: 2px;
+    border: 1px solid black;
+}

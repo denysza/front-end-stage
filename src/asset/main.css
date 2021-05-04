@@ -371,3 +371,9 @@ input, select {
         margin-top: 30px;
     }
 }
+
+.spin-modal .MuiDialog-paper{
+    background-color: transparent !important;
+    padding: 10px !important;
+    box-shadow: none !important;
+  }

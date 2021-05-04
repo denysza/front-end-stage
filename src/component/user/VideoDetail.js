@@ -31,6 +31,7 @@ class VideoDetail extends Component{
             videoPlayed:false,
             videoDetaildata:{},
             CommentAdd:false,
+            comment:"",
         }
     }
 
@@ -48,6 +49,7 @@ class VideoDetail extends Component{
         axios(config)
         .then((response) => {
             let videodata = response.data.videodata;
+            console.log(videodata)
             this.setState({
                 videoDetaildata:videodata
             })
@@ -94,25 +96,56 @@ class VideoDetail extends Component{
         })  
     }
 
-    // handleSendComment = (event) =>{
-    //     var {id} = this.props.match.params;
-    //     var filter = {
-    //         videoid:id,
-    //         title:""
-    //     }
-    //     var config = {
-    //       method: 'post',
-    //       url: `${baseurl}/api/getVideoList/`,
-    //       data : filter
-    //     };
-    // }
+    handleSendComment = (event) =>{
+        
+        var {id} = this.props.match.params;
+        var userData = JSON.parse(localStorage.userData);
+        var content = this.state.comment;
+        if(content==="") return
+        var token = userData.token;
+        var filter = {
+            video:id,
+            content:content
+        }
+        var config = {
+          method: 'post',
+          url: `${baseurl}/api/comment/`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : filter
+        };
+        axios(config)
+        .then((response) => {
+            this.state({
+                CommentAdd:false
+            })
+            this.getdata(id);
+        })            
+        .catch((error)=> {
+            console.log(error)
+        })
+
+    }
 
     handleComment=(event)=>{
         this.setState({CommentAdd:true})
     }
     
-    handleCloseModal(){
-        this.setState({CommentAdd:false})
+    handleCloseModal=(event)=>{
+        this.setState({
+            comment:"",
+            CommentAdd:false
+        })
+    }
+
+    handleCommentChange=(event)=>{
+        this.setState({comment:event.target.value});
+    }
+
+    handleLogout = (event)=>{
+        localStorage.removeItem("userData");
+        window.location.assign('/');
     }
 
     render(){
@@ -159,11 +192,12 @@ class VideoDetail extends Component{
                             <div className='button_outline' onClick={this.handleAddFavo}>
                                 <div>おすすめ</div>
                             </div>
-                           
+                            {
+                                userData &&
                                 <div className='button_outline' onClick={this.handleComment}>
                                     <div>コメント追加</div>
                                 </div>
-                           
+                            }
                         </div>
                     </div>
                     <div className="video_info">
@@ -179,7 +213,7 @@ class VideoDetail extends Component{
                                 </div>
                                 <div className="info_value">
                                     <p>{videoDetaildata.title}</p>
-                                    <p>{videoDetaildata.uploaddata}</p>
+                                    <p>{videoDetaildata.uploaddate}</p>
                                     <p><span>{videoDetaildata.favoritenum}</span></p>
                                     <p><span>{videoDetaildata.playnum}</span>回</p>
                                 </div>
@@ -187,16 +221,15 @@ class VideoDetail extends Component{
                         </div>
                     </div>
                 </div>
-                {videoDetaildata.comment && <div className="container">
-                 
+                {videoDetaildata.comments && <div className="container">
                     <div className="comment_box">
-                        {videoDetaildata.comment?videoDetaildata.comment.map((com) => (
+                        {videoDetaildata.comments?videoDetaildata.comments.map((com) => (
                             <div className="comment_inner">
-                                <h4>ユーザー名<span>2021年4月10日</span></h4>
+                                <h4>{com.username}<span>{com.regDate.substr(0, 10)}</span></h4>
                                 <hr />
                                 <div className="comment_text">
                                     <p>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
+                                    {com.content}
                                     </p>
                                 </div>
                             </div>
@@ -219,16 +252,14 @@ class VideoDetail extends Component{
                     <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
                         <div className="comment_input">
-                            <textarea>
-                                sdadfsdfsfsdf
-                            </textarea>
+                            <textarea value={this.state.comment} onChange={this.handleCommentChange}></textarea>
                         </div>
                     </DialogContentText>
                     <div className="search-btn">
                         <Button onClick={this.handleCloseModal} className="btn btn-search">
                             キャンセル
                         </Button>
-                        <Button onClick={this.handleCloseModal} className="btn btn-search">
+                        <Button onClick={this.handleSendComment} className="btn btn-search">
                             確認
                         </Button>
                     </div>

@@ -331,6 +331,23 @@ class Dashboard extends Component{
                 </div>
                 <div className="content">
                     <div className="manage_card">
+                        <div className="category_edit">
+                            <h3>カテゴリ管理</h3>
+                            <div className="category_title">
+                                <input name="category_item" value=""  />    
+                                <button className="green">追加</button>
+                            </div>
+                            <table className="category_table">
+                                <tr>
+                                    <th>カテゴリー</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button className="red">削除</button></td>
+                                </tr>
+                            </table>
+                        </div>
                         <div className="select_group_m">
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>
@@ -390,7 +407,7 @@ class Dashboard extends Component{
                                     <td><p>{video.favoritenum}回</p></td>
                                     <td>
                                         <button onClick={()=>{video.is_active?this.handleFreezing(video.id):this.handlePermit(video.id)}}  className="grey">{video.is_active?"凍結":"許可"}</button>
-                                        <button className="green">詳細</button>
+                                        <button onClick={()=>window.location.assign(`/admin/admin_video_detail/${video.id}`)} className="green">詳細</button>
                                         <button className="red" onClick={()=>{this.handleDeleteVideo(video.id)}}>削除</button>
                                     </td>
                                 </tr>

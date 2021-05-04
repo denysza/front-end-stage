@@ -118,7 +118,9 @@
 }
 
 .video-play-area div{
-    margin:auto
+    margin:auto;
+    width: 100% !important;
+    height: auto !important;
 }
 .comment_input textarea {
     width: 100%;
@@ -163,6 +165,15 @@
     .video-prev-area {
         width: 100%;
     }
+    .video-play-area{
+        width: 100%;
+    }
+
+    .video-play-area div{
+        width: 100% !important;
+        height: auto !important;
+    }
+
     .box_card.upload {
         top: 20%;
     }

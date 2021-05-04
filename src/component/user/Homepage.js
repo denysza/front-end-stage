@@ -310,7 +310,7 @@ class Homepage extends Component{
                   <div className="pagination">
                     <div>{totalRecords} 件中 {(PageNumber-1) * PageSize + 1} から {PageNumber===pageCount?totalRecords:PageNumber * PageSize} まで表示</div>
                     <Pagination variant="outlined" shape="rounded"color="primary" count={totalRecords} count={pageCount} page={PageNumber} onChange={this.handlePagenation} />
-                </div>
+                 </div>
               </div>
               <Footer />
             </>

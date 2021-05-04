@@ -3,15 +3,77 @@
 import React, { Component } from 'react';
 import Pagination from '@material-ui/lab/Pagination';
 import './../../asset/manage.css';
-
+import axios from 'axios';
+const baseurl = process.env.REACT_APP_BASE_URL;
 class AdminVideoDetail extends Component{
-    
+    constructor(props) {
+        super(props);
+        this.state={
+            Alertmodal:false,
+            alertTitle:"",
+            alertContent:"",
+            videoPlayed:false,
+            videoDetaildata:{},
+        }
+    }
+
     handleLogout = (event)=>{
         localStorage.removeItem("userData");
         window.location.assign('/');
     }
+
+    componentDidMount(){
+        const {id} = this.props.match.params;
+        this.getdata(id)
+    }
+
+    getdata(id){  
+        var config = {
+            method: 'get',
+            url: `${baseurl}/api/getVideoDetail/${id}`,
+            data : {},
+        };
+        axios(config)
+        .then((response) => {
+            let videodata = response.data.videodata;
+            console.log(videodata)
+            this.setState({
+                videoDetaildata:videodata
+            })
+        })            
+        .catch((error)=> {
+            console.log(error)
+        })
+    }
+
+    handleDeleteComment(commentid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'delete',
+          url: `${baseurl}/api/comment/${commentid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const {id} = this.props.match.params;
+            this.getdata(id);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status===401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
     
     render(){
+        const {videoDetaildata}= this.state
         return(
             <>
                 <header>
@@ -39,195 +101,46 @@ class AdminVideoDetail extends Component{
                 <div className="content">
                     <div className="manage_card">
                         <div className="video_detail">
-                            <img src="image/business.png" alt="a"/>
+                            <img src={videoDetaildata.preveimg} alt="a"/>
                             <div>
                                 <div className="info_type">
-                                    <p>動画タイトル  &nbsp;&nbsp;:</p>
-                                    <p>共有日付  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
-                                    <p> 推薦数   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
-                                    <p>再生回数  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</p>
+                                    <p>動画タイトル:</p>
+                                    <p>共有日付:</p>
+                                    <p> 推薦数:</p>
+                                    <p>再生回数:</p>
                                 </div>
                                 <div className="info_value">
-                                    <p>タイトルタイトル</p>
-                                    <p>2021年4月10日</p>
-                                    <p><span>15</span></p>
-                                    <p><span>25</span>回</p>
+                                    <p>{videoDetaildata.title}</p>
+                                    <p>{videoDetaildata.uploaddate?videoDetaildata.uploaddate.substr(0, 10):""}</p>
+                                    <p>{videoDetaildata.favoritenum}</p>
+                                    <p>{videoDetaildata.playnum}回</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="select_group_m">
-                            <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
-                                <div className='search_m'>
-                                    <div className='search_box_m'>
-                                        <img alt="" src="image/search.svg" className="searchImage_m" onClick={this.focusInput} />
-                                        <input id="search_input" type="text" className="search_text_m" name="search_keyword"></input>
-                                    </div>
-                                    <div className='button_outline_m'>
-                                        <div>検索</div>
-                                    </div>
-                                </div>
-                            </form> 
-                            <div className="arrange_group_m">
-                                <div className="arrange_box_m">
-                                    <div>新着</div>
-                                    <img alt="" src="image/arrange.svg" className="arrangeImage_m"  />
-                                </div>
-                            </div>
-                        </div>
+                       
                         <table className="comment">
                             <tr>
                                 <th>コメント情報</th>
                                 <th>コメント内容</th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>竹島稔</p>
-                                    <p>2021年4月10日</p>
-                                </td>
-                                <td>
-                                    素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。素晴らしい動画です。
-                                </td>
-                                <td>
-                                    <button className="grey">許可</button>
-                                    <button className="red">削除</button>
-                                </td>
-                            </tr>
+
+                           
+                                {videoDetaildata.comments?videoDetaildata.comments.map((com) => (                                    
+                                    <tr>
+                                        <td>
+                                            <p>{com.username}</p>
+                                            <p>{com.regDate.substr(0, 10)}</p>
+                                        </td>
+                                        <td>
+                                        {com.content}
+                                        </td>
+                                        <td>
+                                            <button onClick={()=>this.handleDeleteComment(com.id)} className="red">削除</button>
+                                        </td>
+                                    </tr>
+                                )):""}                     
                         </table>
-                        <div className="pagination">
-                            <div>600 件中 1 から 15 まで表示</div>
-                            <Pagination count={150} variant="outlined" shape="rounded"color="primary" />
-                        </div>
                     </div>
                 </div>
                 {/* <footer>

@@ -5,7 +5,10 @@ import makeAnimated from 'react-select/animated';
 import Footer from '../../layout/Footer.js';
 import './../../asset/main.css';
 import './../../asset/videoDetail.css';
-
+import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+    Dialog
+} from '@material-ui/core';
 import axios from 'axios';
 
 const baseurl = process.env.REACT_APP_BASE_URL;
@@ -29,6 +32,7 @@ class VideoDetail extends Component{
             categoryList:[],
             selectedOption:"",
             selected:[],
+            spin:false,
         }
     }
 
@@ -153,6 +157,9 @@ class VideoDetail extends Component{
         fd.append('videoType', videoType);
         fd.append('vidoePrevimg', videoPrevimg);
         fd.append('categories', selectedOption);
+        this.setState({
+            spin:true
+          });
         axios.post(`${baseurl}/api/upload/`, fd, {
             headers: {
               'Authorization': 'Bearer ' + token,
@@ -167,6 +174,7 @@ class VideoDetail extends Component{
                 videoTitle:"",
                 selectedOption:"",
                 selected:[],
+                spin:false
             })
           }).catch((error)=> {
             if (error.response) {
@@ -175,6 +183,9 @@ class VideoDetail extends Component{
                     window.location.assign('/');
                 }
             }
+            this.setState({
+                spin:false
+            });
           })       
     }
 
