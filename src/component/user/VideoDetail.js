@@ -117,7 +117,8 @@ class VideoDetail extends Component{
         };
         axios(config)
         .then((response) => {
-            this.state({
+            this.setState({
+                comment:"",
                 CommentAdd:false
             })
             this.getdata(id);

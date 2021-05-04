@@ -67,8 +67,7 @@ class Dashboard extends Component{
         };
         
         axios(config)
-        .then((response) => {
-     
+        .then((response) => {     
             var videos = response.data.videos;
             var pageCount = response.data.pageCount;
             var totalRecords = response.data.totalRecord;
