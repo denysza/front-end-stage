@@ -203,4 +203,8 @@
     .css-1hb7zxy-IndicatorsContainer {
         min-height: 25px!important;
     }
+    .vid_screen {
+        outline-offset: -3px;
+        width: 80%;
+    }
 }
