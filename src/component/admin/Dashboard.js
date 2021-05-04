@@ -330,6 +330,23 @@ class Dashboard extends Component{
                 </div>
                 <div className="content">
                     <div className="manage_card">
+                        <div className="category_edit">
+                            <h3>カテゴリ管理</h3>
+                            <div className="category_title">
+                                <input name="category_item" value=""  />    
+                                <button className="green">追加</button>
+                            </div>
+                            <table className="category_table">
+                                <tr>
+                                    <th>カテゴリー</th>
+                                    <th>操作</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><button className="red">削除</button></td>
+                                </tr>
+                            </table>
+                        </div>
                         <div className="select_group_m">
                             <form id="searchForm" className="search-form" onSubmit={this.searchbyKeywords}>
                                 <div className='search_m'>

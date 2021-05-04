@@ -191,62 +191,57 @@ class VideoDetail extends Component{
 
     render(){       
         return(
-            <>
-                <div className="header">
-                  <div className="header_bar">
-                      <div className="logo">
-                        <a href="/"><img alt="" src="/image/heart.svg" /></a>
-                      </div>
-                      <div className="menu">
-                        <a href="/mypage" className="mypagebtn"><p>マイページ</p></a>
-                        <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
-                      </div>
-                  </div>
-                  <img src="image/01.jpg" alt="video_sharing" />
-                  <div className="box_card upload">
-                      <div className="card_inner">
-                          <h1>動画登録</h1>
-                          <form action="" method="post" enctype="form-data/multipart">
-                              {this.state.videoPrevimg?<img src={this.state.videoPrevimg} alt="a" className="vid_screen"/>:<img src="/image/business.png" alt="a" className="vid_screen"/>}
-                              <input type="file" onChange={this.updateVideo} ref={(ref) => this.upload = ref} style={{ display: 'none' }} multiple />
-                              <div className='button_outline general_button_outline' onClick={(e) => this.upload.click() }>
-                                <div>ファイル選択</div>
-                              </div>
-                              <div className="input_element">
-                                  <label for="title">動画タイトル</label>
-                                  <input id="title" name="title" onChange={this.handleTitle} value={this.state.videoTitle}/>
-                              </div>
-                              <div className="input_element">
-                                <Select
-                                    closeMenuOnSelect={false}
-                                    components={animatedComponents}
-                                    isMulti
-                                    value={this.state.selected}
-                                    options = {this.state.categoryList}
-                                    onChange={this.handleChangeCategory}
-                                />
-                              </div>
-                              <div className='button_outline general_button_outline' onClick={this.handleUpload}>
-                                <div>動画登録</div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
+            <>  
+                <div className="full_height">
+                    <div className="header">
+                        <div className="header_bar">
+                            <div className="logo">
+                                <a href="/"><img alt="" src="/image/heart.svg" /></a>
+                            </div>
+                            <div className="menu">
+                                <a href="/mypage" className="mypagebtn"><p>マイページ</p></a>
+                                <p className="logoutbtn" onClick={this.handleLogout}>ログアウト</p>
+                            </div>
+                        </div>
+                        <img src="image/01.jpg" alt="video_sharing" />
+                        <div className="box_card upload">
+                        <div className="card_inner">
+                            <h1>動画登録</h1>
+                            <form action="" method="post" enctype="form-data/multipart">
+                                {this.state.videoPrevimg?<img src={this.state.videoPrevimg} alt="a" className="vid_screen"/>:<img src="/image/business.png" alt="a" className="vid_screen"/>}
+                                <input type="file" onChange={this.updateVideo} ref={(ref) => this.upload = ref} style={{ display: 'none' }} multiple />
+                                <div className='button_outline general_button_outline' onClick={(e) => this.upload.click() }>
+                                    <div>ファイル選択</div>
+                                </div>
+                                <div className="input_element">
+                                    <label for="title">動画タイトル</label>
+                                    <input id="title" name="title" onChange={this.handleTitle} value={this.state.videoTitle}/>
+                                </div>
+                                <div className="input_element">
+                                    <Select
+                                        closeMenuOnSelect={false}
+                                        components={animatedComponents}
+                                        isMulti
+                                        value={this.state.selected}
+                                        options = {this.state.categoryList}
+                                        onChange={this.handleChangeCategory}
+                                    />
+                                </div>
+                                <div className='button_outline general_button_outline' onClick={this.handleUpload}>
+                                    <div>動画登録</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                    <div className="banner_account1">
+                        <img src="image/banner.png"/>
+                    </div>
+                    <div className="banner_account2">
+                        <img src="image/banner_sp.png"/>
+                    </div>
+                    <Footer />
                 </div>
-                <div className="banner_account1">
-                    <img src="image/banner.png"/>
-                </div>
-                <div className="banner_account2">
-                    <img src="image/banner_sp.png"/>
-                </div>
-                <Footer />
-                <Dialog
-                    className="spin-modal"
-                    open={this.state.spin}      
-                    disableBackdropClick
-                >
-                    <CircularProgress />
-                </Dialog>  
             </>
         )
     }
