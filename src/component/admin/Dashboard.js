@@ -12,6 +12,7 @@ class Dashboard extends Component{
     constructor(props) {
         super(props);
         this.state={
+            newCategory:"",
             Alertmodal:false,
             alertTitle:"",
             alertContent:"",
@@ -299,6 +300,75 @@ class Dashboard extends Component{
             }
         });
     }
+
+    handleDeleteCategory(categoryid){
+        var userData = JSON.parse(localStorage.userData);
+        var token = userData.token;
+        var config = {
+          method: 'delete',
+          url: `${baseurl}/api/category/${categoryid}`,
+          headers: { 
+            'Authorization': 'Bearer ' + token,
+        },
+          data : {}
+        };
+        axios(config)
+        .then((response) => {
+            const{filter}=this.state;
+            this.getCategory();
+            this.getdata(filter);         
+        })
+        .catch((error)=> {
+            if (error.response) {
+                if(error.response.status===401){
+                    localStorage.removeItem("userData");
+                    window.location.assign('/');
+                }
+            }
+        });
+    }
+
+    handleChangeCategoryText=(event)=>{
+        this.setState({
+            newCategory:event.target.value
+        });
+    }
+
+    handleAddNewCategory=(event)=>{
+        const {newCategory}=this.state
+        if (newCategory==="")
+            return
+            var userData = JSON.parse(localStorage.userData);
+            var token = userData.token;
+            var data={
+                categoryName:newCategory
+            }
+            var config = {
+              method: 'post',
+              url: `${baseurl}/api/addCategory/`,
+              headers: { 
+                'Authorization': 'Bearer ' + token,
+            },
+              data : data
+            };
+            axios(config)
+            .then((response) => {
+                const{filter}=this.state;
+                this.setState({
+                    newCategory:""
+                })
+                this.getCategory();
+                this.getdata(filter);         
+            })
+            .catch((error)=> {
+                if (error.response) {
+                    if(error.response.status===401){
+                        localStorage.removeItem("userData");
+                        window.location.assign('/');
+                    }
+                }
+            });
+    }
   
 
     render(){      
@@ -333,18 +403,21 @@ class Dashboard extends Component{
                         <div className="category_edit">
                             <h3>カテゴリ管理</h3>
                             <div className="category_title">
-                                <input name="category_item" value=""  />    
-                                <button className="green">追加</button>
+                                <input onChange={this.handleChangeCategoryText} value={this.state.newCategory}/>    
+                                <button className="green" onClick={this.handleAddNewCategory}>追加</button>
                             </div>
                             <table className="category_table">
                                 <tr>
                                     <th>カテゴリー</th>
                                     <th>操作</th>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><button className="red">削除</button></td>
-                                </tr>
+                                {categoryList.map((category) => (
+                                    <tr>
+                                      <td>{category.label}</td>
+                                      <td><button className="red" onClick={()=>this.handleDeleteCategory(category.value)}>削除</button></td>
+                                    </tr>
+                                ))}
+                               
                             </table>
                         </div>
                         <div className="select_group_m">
