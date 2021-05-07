@@ -241,6 +241,14 @@ class VideoDetail extends Component{
                         <img src="image/banner_sp.png"/>
                     </div>
                     <Footer />
+                    
+                    <Dialog
+                        className="spin-modal"
+                        open={this.state.spin}      
+                        disableBackdropClick
+                    >
+                        <CircularProgress />
+                    </Dialog> 
                 </div>
             </>
         )
